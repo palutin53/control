@@ -236,7 +236,7 @@ if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
 	echo "<br />";
 } 
-mysql_select_db("controlcable",$conexion);
+mysql_select_db("controlinternet",$conexion);
 
 mysql_query("INSERT INTO usuarios (codigo, nombre, usuario, contrasena, permisos)
 	VALUES (101,'Pablo Lutin', 'palutin', 'soylacomadreja1','1')");
