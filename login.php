@@ -1,5 +1,7 @@
 <?php
 
+include 'style.css';
+
 session_start();
 
 //obtener variables
@@ -15,24 +17,23 @@ if(!$conexion = mysql_connect("localhost","root","")){
 mysql_select_db("controlcable",$conexion);
 //preparar consulta
 
-$consulta = "SELECT * FROM usuarios";
+$consulta = mysql_query("SELECT * FROM usuarios",$conexion);
 
 //lanzar consulta
 
-$resultado = mysql_query($consulta, $conexion);
 //repasar resultados
 
-while($fila = mysql_fetch_array($resultado)){
+while ($fila = mysql_fetch_array($consulta)){
 	$usuariodb = $fila['usuario'];
 	$contrasenadb = $fila['contrasena'];	
-	$permisosdb = $_fila['permisos'];
+	$permisosdb = $fila['permisos'];
 }
 //si es positivo entonces asignar
 if($usuario == $usuariodb & $contrasena == $contrasenadb){
 	$_SESSION['usuario'] = $usuario;
 	$_SESSION['contrasena'] = $contrasena; 
 	$_SESSION['permisos'] = $permisosdb;
-
+/*
 	echo '
 <html>
 	<head>
@@ -40,9 +41,9 @@ if($usuario == $usuariodb & $contrasena == $contrasenadb){
 	</head>
 </html>
 ';
-
+*/
 }
-
+/*
 //si es negativo entonces nada
 else{
 		echo '
@@ -52,7 +53,7 @@ else{
 	</head>
 </html>
 ';
-	}
+	} */
 //cerrar bade de datos
 mysql_close($conexion);
 

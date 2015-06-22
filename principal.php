@@ -1,4 +1,6 @@
 <?php
+include 'style.css';
+
 session_start();
 
 /*

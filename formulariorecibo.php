@@ -1,5 +1,7 @@
 <?php
 
+include 'style.css';
+
 echo "<html>
 		<head>
 		<font size='28'>

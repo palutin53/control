@@ -1,5 +1,7 @@
 <?php
 
+include 'style.css';
+
 session_start();
 /*
 $_SESSION['usuario'] = "palutin";
