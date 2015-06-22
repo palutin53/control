@@ -89,7 +89,7 @@ if (!$conexion){
 } 
 mysql_select_db("controlcable",$conexion);
 mysql_query("INSERT INTO usuarios (codigo, nombre, usuario, contrasena, permisos)
-	VALUES (102,'Ivan Lutin', 'ivnltn', 'Guatemala2015','1')");
+	VALUES (102,'Ivan Lutin', 'ivnlt', 'Guatemala2015','1')");
 
 if(!mysql_query("INSERT INTO usuarios (codigo, nombre, usuario, contrasena, permisos)
 	VALUES (101,'Pablo Lutin', 'palutin', 'soylacomadreja1','1')
@@ -242,7 +242,7 @@ mysql_query("INSERT INTO usuarios (codigo, nombre, usuario, contrasena, permisos
 	VALUES (101,'Pablo Lutin', 'palutin', 'soylacomadreja1','1')");
 
 if(!mysql_query("INSERT INTO usuarios (codigo, nombre, usuario, contrasena, permisos)
-	VALUES (102,'Ivan Lutin', 'ivnltn', 'Guatemala2015','1')
+	VALUES (102,'Ivan Lutin', 'ivnlt', 'Guatemala2015','1')
 	")){
 		echo "No se ha podido crear contenido de prueba para usuarios: ".mysql_error();
 echo "<br />";
