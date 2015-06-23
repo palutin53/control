@@ -1,6 +1,4 @@
 <?php
-include 'style.css';
-
 session_start();
 
 $usuario = $_SESSION['usuario'];
@@ -15,11 +13,12 @@ mysql_select_db("controlcable");
 
 $nombre = $_GET['nombre'];
 $sector = $_GET['sector'];
+$codigo = $_GET['codigo'];
 
 
 		echo "	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />";
-		echo "Resultados para:  '".$nombre."' ' ".$sector."'";
-	$consulta = mysql_query("SELECT * FROM clientes WHERE nombre = '$nombre' OR  sector = '$sector' ORDER BY sector",$conexion);
+		echo "Resultados para: '".$codigo."' '".$nombre."' ' ".$sector."'";
+	$consulta = mysql_query("SELECT * FROM clientes WHERE codigo LIKE '%$codigo%' OR nombre LIKE '%".$nombre."%' OR  sector LIKE '%$sector%' ORDER BY sector",$conexion);
 
 	echo "
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />

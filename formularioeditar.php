@@ -1,7 +1,4 @@
 <?php
-
-include 'style.css';
-
 session_start();
 
 $usuario = $_SESSION['usuario'];
@@ -16,8 +13,8 @@ $ultima_fac = $_GET['ultima_fac'];
 $ultimo_mes = $_GET['ultimo_mes'];
 $comentario = $_GET['comentario'];
 
-$consulta = mysql_query("SELECT * FROM clientes WHERE nombre = '$nombre' 
-	AND  sector = '$sector' ORDER BY sector",$conexion);
+$consulta = mysql_query("SELECT * FROM clientes WHERE codigo LIKE '%".$codigo."%' OR nombre LIKE '%".$nombre."%' 
+	OR  sector LIKE '%$sector%' ORDER BY sector",$conexion);
 
 
 		

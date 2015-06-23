@@ -1,7 +1,5 @@
 <?php
 
-include 'style.css';
-
 session_start();
 
 $usuario = $_SESSION['usuario'];
@@ -18,7 +16,7 @@ $sector = $_POST['sector'];
 
 		echo "	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />";
 		echo "Resultados para: '".$sector."'";
-	$consulta = mysql_query("SELECT * FROM clientes WHERE sector = '$sector' ORDER BY sector",$conexion);
+	$consulta = mysql_query("SELECT * FROM clientes WHERE sector LIKE '%".$sector."%' ORDER BY sector",$conexion);
 
 		echo "
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />

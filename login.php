@@ -22,16 +22,15 @@ $consulta = "SELECT * FROM usuarios";
 $resultado = mysql_query($consulta, $conexion);
 //repasar resultados
 
-while ($fila = mysql_fetch_array($resultado))
-{
+while($fila = mysql_fetch_array($resultado)){
 	$usuariodb = $fila['usuario'];
-	$contrasenadb = $fila['contrasena'];
-	$permisosdb = $fila['permisos'];
+	$contrasenadb = $fila['contrasena'];	
+	$permisosdb = $_fila['permisos'];
 }
 //si es positivo entonces asignar
 if($usuario == $usuariodb & $contrasena == $contrasenadb){
 	$_SESSION['usuario'] = $usuario;
-	$_SESSION['contrasena'] = $contrasena;
+	$_SESSION['contrasena'] = $contrasena; 
 	$_SESSION['permisos'] = $permisosdb;
 
 	echo '
@@ -44,8 +43,7 @@ if($usuario == $usuariodb & $contrasena == $contrasenadb){
 
 }
 
-//si es negativo entonces nada 
-
+//si es negativo entonces nada
 else{
 		echo '
 <html>
@@ -54,7 +52,7 @@ else{
 	</head>
 </html>
 ';
-	} 
+	}
 //cerrar bade de datos
 mysql_close($conexion);
 

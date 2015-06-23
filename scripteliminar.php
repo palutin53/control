@@ -1,7 +1,5 @@
 <?php
 
-include 'style.css';
-
 include "conexioncable.php";
 
 $codigo = $_GET['codigo'];

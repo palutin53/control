@@ -1,7 +1,5 @@
 <?php
 
-include 'style.css';
-
 session_start();
 
 $usuario = $_SESSION['usuario'];
@@ -14,8 +12,9 @@ Buscar por nombre<br><br>
 <table width=60%>
 <tr><td>
 <form action='editar.php' method='GET'>
-<tr><td>Nombre:</td><td>Sector: </td></tr>
-<tr>
+<tr><td>Codigo: </td><td>Nombre:</td><td>Sector: </td></tr>
+<tr><td>
+<input type='text' name='codigo' placeholder='ingresa codigo' id='codigo'></td>
 <td><input type='text' name='nombre' placeholder='ingresa valor de busqueda' id='nombre'></td>
 		<td><Select placeholder='sector' name='sector' value='sector' id='sector'>
 		<option selected='selected' value='--'>Selecciona sector</option>

@@ -1,8 +1,5 @@
 <?php
 
-
-include 'style.css';
-
 echo "
 <html>
 	<head>

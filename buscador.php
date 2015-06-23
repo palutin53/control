@@ -1,7 +1,5 @@
 <?php
 
-include 'style.css';
-
 session_start();
 
 $usuario = $_SESSION['usuario'];
@@ -19,7 +17,7 @@ $sector = $_GET['sector'];
 
 		echo "	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />";
 		echo "Resultados para: '".$nombre."' ' ".$sector."'";
-	$consulta = mysql_query("SELECT * FROM clientes WHERE nombre LIKE '%".$nombre."%' OR  sector LIKE '$sector' ORDER BY sector",$conexion);
+	$consulta = mysql_query("SELECT * FROM clientes WHERE nombre LIKE '%".$nombre."%' OR  sector LIKE '%".$sector."%' ORDER BY sector",$conexion);
 
 	echo "
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
@@ -31,7 +29,6 @@ $sector = $_GET['sector'];
 			<td>Direccion</td>
 			<td>Ultima Factura</td>
 			<td>Ultimo Mes</td>
-			<td>Año</td>
 			<td colspan=2>Comentario</td>
 		</tr>	
 ";
@@ -40,7 +37,7 @@ $sector = $_GET['sector'];
  	{
 		echo "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 		<tr><td>".$fila['codigo']."</td><td>".$fila['nombre']."</td><td>".$fila['sector']."</td><td>".$fila['direccion']."</td><td>".$fila['ultima_fac']."
-		</td><td>".$fila['ultimo_mes']."</td><td>".$fila['anio']."</td><td>".$fila['comentario']."</td>
+		</td><td>".$fila['ultimo_mes']."</td><td>".$fila['anio']."</td>
 		</tr><tr>";
 	}
 	echo "</table>";

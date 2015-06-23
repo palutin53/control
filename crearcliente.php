@@ -1,7 +1,5 @@
 <?php
 
-include 'style.css';
-
 session_start();
 
 $contador = 0;
@@ -41,7 +39,6 @@ $conexion = mysql_connect("localhost","root","");
 if(!$conexion){
 	die ("ERROR: ".mysql_error());
 }
-mysql_select_db("controlcable",$conexion);
 
 if( $contador == 0 ){
 if(!mysql_query("INSERT INTO clientes(codigo,nombre,sector,direccion,ultima_fac,ultimo_mes,anio,comentario)
