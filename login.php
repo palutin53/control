@@ -25,7 +25,7 @@ $resultado = mysql_query($consulta, $conexion);
 while($fila = mysql_fetch_array($resultado)){
 	$usuariodb = $fila['usuario'];
 	$contrasenadb = $fila['contrasena'];	
-	$permisosdb = $_fila['permisos'];
+	$permisosdb = $fila['permisos'];
 }
 //si es positivo entonces asignar
 if($usuario == $usuariodb & $contrasena == $contrasenadb){
