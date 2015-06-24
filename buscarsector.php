@@ -1,5 +1,6 @@
 <?php
-
+//include CSS Style Sheet
+   echo "<link rel='stylesheet' type='text/css' href='style.css' />";
 session_start();
 
 $usuario = $_SESSION['usuario'];

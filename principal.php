@@ -1,4 +1,6 @@
 <?php
+//include CSS Style Sheet
+   echo "<link rel='stylesheet' type='text/css' href='style.css' />";
 session_start();
 echo "Usuario: ". $_SESSION['usuario']. "<br />". "Tu contraseña es: ". $_SESSION['contrasena']. "<br />";
 echo "<br />";

@@ -8,41 +8,40 @@ echo "
 <html>
 	<head>
 		<tittle></tittle>
+		<link rel='stylesheet' type='text/css' href='css/bootstrap.css' />
+		<link rel='stylesheet' type='text/css' href='css/style.css' />
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 	</head>
-	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 	<body>
-	<center><h1>Seleccione Accion</center></h1>
-	<br>
-	<br>
-	<center>
-	<table width=50%>
-			<tr><td>
-				<form action='pagos.php'>
-					<center><button type='submit' name='Pago' class='boton'>Registrar Pago</buttson></center>
-				</form>
-			</td></tr>
-			<tr><td>
-				<form action='adminclientes.php'>
-					<center><button type='submit' name='Admin. Clientes' class='boton'>Admin. Clientes</button></center>
-				</form>
-			</td></tr>
-			<tr><td>
-				<form action='formulariobuscador.php'>
-					<center><button type='submit' name='gen_listados' class='boton'>Generar Listados</button></center>
-				</form>
-			</td></tr>
-			<tr><td>
-				<form action='principal.php'>
-					<center><button type='submit' name='Imprimir Listados' class='boton'>Imprimir Listados</button></center>
-				</form>
-			</td></tr>
-			<td colspan=2>
-				<form action='menu.php' method='POST'>
-					<center><button type='submit' name='regresar' id='regresar'>Regresar</button></center>
-				</form>
-			</td></tr>
-	</table>
-	</center>
+		<div class='cajaacciones'>
+			<h1>Seleccione una opcion</h1>
+				<div class='listabotones'>
+					<form action='pagos.php'>
+						<button type='submit' name='Pago' class='btn btn-primario'>Registrar Pago</button>
+					</form>
+				</div>
+				<div class='listabotones'>
+					<form action='adminclientes.php'>
+						<button type='submit' name='Admin. Clientes' class='btn btn-primario'>Admin. Clientes</button>
+					</form>
+				</div>
+				<div class='listabotones'>
+					<form action='formulariobuscador.php'>
+						<button type='submit' name='gen_listados' class='btn btn-primario'>Generar Listados</button>
+					</form>
+				</div>
+				<div class='listabotones'>
+					<form action='principal.php'>
+						<button type='submit' name='Imprimir Listados' class='btn btn-primario'>Imprimir Listados</button>
+					</form>
+				</div>
+				<div class='listabotones'>
+					<form action='menu.php' method='POST'>
+						<button type='submit' name='regresar' id='regresar' class='btn btn-primario'>Regresar</button>
+					</form>
+				</div>
+		</div>
+		
 	</body>
 
 </html>

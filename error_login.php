@@ -1,6 +1,7 @@
 <?php
 
-
+//include CSS Style Sheet
+   echo "<link rel='stylesheet' type='text/css' href='style.css' />";
 echo "
 <html>
 	<head>

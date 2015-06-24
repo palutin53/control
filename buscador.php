@@ -12,12 +12,12 @@ if (!$conexion){
 } 
 mysql_select_db("controlcable");
 
-$nombre = $_GET['nombre'];
+
 $sector = $_GET['sector'];
 
 		echo "	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />";
-		echo "Resultados para: '".$nombre."' ' ".$sector."'";
-	$consulta = mysql_query("SELECT * FROM clientes WHERE nombre LIKE '%".$nombre."%' OR  sector LIKE '%".$sector."%' ORDER BY sector",$conexion);
+		echo "Resultados para: ' ".$sector."'";
+	$consulta = mysql_query("SELECT * FROM clientes WHERE sector LIKE '%".$sector."%' ORDER BY sector",$conexion);
 
 	echo "
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
@@ -53,7 +53,7 @@ $sector = $_GET['sector'];
 if (empty($totalrows))
  {
  	echo "<br><br>";
-  echo "No se han encontrado resultados al buscar <strong>$nombre</strong>.<br> <br>Comprueba si está bién escrito e inténtalo de nuevo.";
+  echo "No se han encontrado resultados al buscar <strong>$sector</strong>.<br> <br>Comprueba si está bién escrito e inténtalo de nuevo.";
   echo "<form action='formulariobuscador.php'>
 	<input type='submit' name='regresar' value='regresar'>
 	</form>
