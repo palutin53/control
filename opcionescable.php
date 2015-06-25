@@ -10,9 +10,10 @@ echo "
 		<tittle></tittle>
 		<link rel='stylesheet' type='text/css' href='css/bootstrap.css' />
 		<link rel='stylesheet' type='text/css' href='css/style.css' />
+		<script src='js/custom.js'></script>
 		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 	</head>
-	<body>
+	<body onload='nobackbutton();'>
 		<div class='cajaacciones'>
 			<h1>Seleccione una opcion</h1>
 				<div class='listabotones'>
@@ -27,7 +28,7 @@ echo "
 				</div>
 				<div class='listabotones'>
 					<form action='formulariobuscador.php'>
-						<button type='submit' name='gen_listados' class='btn btn-primario'>Generar Listados</button>
+						<button type='submit' name='gen_listados' class='btn btn-primario'>Consulta Clientes</button>
 					</form>
 				</div>
 				<div class='listabotones'>
@@ -36,7 +37,7 @@ echo "
 					</form>
 				</div>
 				<div class='listabotones'>
-					<form action='menu.php' method='POST'>
+					<form action='menu.php'  method='POST'>
 						<button type='submit' name='regresar' id='regresar' class='btn btn-primario'>Regresar</button>
 					</form>
 				</div>
