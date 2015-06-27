@@ -14,11 +14,11 @@ echo  "
 	<body onload='nobackbutton();'>
 		<div class=container>
 		<div class=row >	
-			<form action='buscador.php' method='GET' class='col-md-4 col-md-offset-3'>
-			<h1>Consulta de Clientes</h1>
+			<form action='buscador.php' method='GET' class='col-md-6 col-md-offset-3'>
+			<h1 class='col-md-offset-2'>Consulta de Clientes</h1>
 					<div class form-group>
 						<label for='nombre'>Nombre:</label>
-						<input type='text' name='Nombre' value='nombre' class='form-control'>
+						<input type='text' name='Nombre' placeholder='nombre' class='form-control'>
 					</div>
 					<div class='form-group'>
 						<label for='sector'>Sector:</label>
@@ -36,12 +36,8 @@ echo  "
 						</select>
 					</div>
 					<div class='form-group text-center'>
-						<form action='buscador.php' method='POST'>
-							<input type='submit' name='Busqueda' value='Generar Consulta' class='btn btn-primary'>
-						</form>
-						<form action='opcionescable.php' method='POST' class='top-buffer'>
-						<button type='submit' name='regresar' id='regresar'class='btn btn-primary'>Regresar</button>
-						</form>
+						<input type='submit' name='Busqueda' value='Generar Consulta' class='btn btn-primary'>
+						<a class='btn btn-primary' href='opcionescable.php' role='button'>Regresar</a>
 					</div>
 				</form>
 			</div>

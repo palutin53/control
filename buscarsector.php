@@ -1,5 +1,6 @@
-<?php
+<?php 
 session_start();
+
 
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
@@ -30,8 +31,15 @@ $sector = $_POST['sector'];
 		";
 		echo "<h1 class='text-center'>Resultados para: '".$sector."'</h1>";
 		$consulta = mysql_query("SELECT * FROM clientes WHERE sector LIKE '%".$sector."%' ORDER BY sector",$conexion);
-		echo "<div id='dvData'>
-			<table class=' col-md-12 table-condensed  bordeimpreso'>
+		echo "
+
+		<div class='col-md-6 top-buffer bottom-buffer'>
+			<a class='btn btn-primary' href='principal.php' role='button'>Regresar</a>
+			<input type='button' id='btnExport' value=' Generar Version para imprimir ' class='btn btn-primary' />
+		</div>
+
+		<div id='dvData'>
+			<table  class='bordeimpreso col-md-12 table table-striped table-bordered table table-hover table-condensed table-responsive '>
 				<tr>
 					<td>Codigo</td>
 					<td>Nombre</td>
@@ -57,23 +65,19 @@ $sector = $_POST['sector'];
 		echo "
 		<tr><td>".$fila['codigo']."</td><td>".$fila['nombre']."</td><td>".$fila['sector']."</td><td>".$fila['direccion']."</td><td>".$fila['ultima_fac']."
 		</td><td>".$fila['ultimo_mes']."</td><td>".$fila['anio']."</td>
-		</tr><tr>";
+		</tr>";
 		}
-		echo "</table>";
 		echo "
-		<div class='col-md-6 top-buffer'>
-			<a class='btn btn-primary' href='principal.php' role='button'>Regresar</a>
-			<input type='button' id='btnExport' value=' Export Table data into Excel ' />
-		</div>
+		</table>
 		
 		</div>
 		</div>
 		<script>
-    $('#btnExport').click(function(e) {
+   		 $('#btnExport').click(function(e) {
         window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData').html()));
         e.preventDefault();
-    });
-    </script>
+   		 });
+    	</script>
 		</body>
 		";
 		}

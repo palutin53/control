@@ -33,8 +33,7 @@ echo "
 					</div>
 			</div>	
 	</body>
-	<footer class='pie'>
-</footer>
+	
 </html>
 ";
 

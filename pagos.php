@@ -19,19 +19,16 @@ echo "
 		</head>
 	<body onload='nobackbutton();'>
 		<div class='container '>
-			<div class='form-inline col-md-6 col-md-offset-3'>
-				<h1>Seleccione una Opcion</h1>
+			<div class='form-inline col-md-10 col-md-offset-2'>
+				<h1 class='col-md-offset-2'>Seleccione una Opcion</h1>
 					<div class='form-group'>
-						<form action='formulariorecibo.php'>
-							<button type='submit' name='recibo' class='form-control btn btn-primary'>Registrar Recibo</button>
-						</form>
+					<a href='menu.php' class='btn btn-primary btn-default' role='button'><span class='glyphicon glyphicon-home' aria-hidden='true'></span>  Inicio</a>				
+					<a class='btn btn-primary' href='formulariorecibo.php' role='button'>Registrar Recibo</a>
+					<a class='btn btn-primary' href='formulariofacturas.php' role='button'>Registrar Factura</a>
+					<a class='btn btn-primary' href='opcionescable.php' role='button'>Regresar</a>
+					<a href='index.php' class='btn btn-primary btn-default' role='button'><span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>  Cerrar Sesion</a>	
 					</div>
-					<div class='form-group'>
-						<form action='formulariofacturas.php'>
-							<button type='submit' name='factura' class='form-control btn btn-primary'>Registrar Factura</button>
-							<a class='btn btn-primary' href='opcionescable.php' role='button'>Regresar</a>
-						</form>
-					</div>
+			</div>
 			</div>
 		</div>
 	</body>
