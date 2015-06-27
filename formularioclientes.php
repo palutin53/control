@@ -29,28 +29,6 @@ echo "
 					<label for='date'>Fecha:</label>
 					<input type='date'class='form-control'>
 				</div>
-				<div class='col-md-6'>
-					<label for='numero'>Numero de recibo:</label>
-					<input type='int' placeholder='numero' name='numero' class='form-control'>
-				</div>
-				<div class='col-md-6'>
-					<label for='ultimo_mes'>Mes:</label>
-					<Select placeholder='ultimo_mes' name='ultimo_mes' class='form-control'>
-						<option  value='seleccione'>seleccione</option>
-						<option  value='Enero'>Enero</option>
-						<option  value='Febrero'>Febrero</option>
-						<option  value='Marzo'>Marzo</option>
-						<option  value='Abril'>Abril</option>
-						<option  value='Mayo'>Mayo</option>
-						<option  value='Junio'>Junio</option>
-						<option  value='Julio'>Julio</option>
-						<option  value='Agosto'>Agosto</option>
-						<option  value='Septiembre'>Septiembre</option>
-						<option  value='Octubre'>Octubre</option>
-						<option  value='Noviembre'>Noviembre</option>
-						<option  value='Diciembre'>Diciembre</option>
-					<Select placeholder='anio' class='date'>
-				</div>
 				<div class='col-md-6'> 
 					<label for='sector'>Sector:</label>
 						<select  name ='sector' class='form-control'>
@@ -77,6 +55,10 @@ echo "
 				<div class='col-md-12'>
 					<label for='comentario'>Comentario:</label>
 					<input type='Text' placeholder='comentario' name='comentario' class='form-control'>
+				</div>
+				<div class='col-md-12'>
+					<label for='nit'>NIT:</label>
+					<input type='Text' placeholder='xxxxxxx-x' name='nit' class='form-control'>
 				</div>
 				<div class='col-md-12 top-buffer bottom-buffer'>
 					<input type='reset' class='btn btn-primary'>

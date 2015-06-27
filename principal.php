@@ -1,8 +1,8 @@
 <?php
 session_start();
-echo "Usuario: ". $_SESSION['usuario']. "<br />". "Tu contraseña es: ". $_SESSION['contrasena']. "<br />";
-echo "<br />";
-echo "<br />";
+
+$_SESSION['usuario'];
+$_SESSION['contrasena'];
 
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
@@ -42,30 +42,6 @@ echo "
 		</table></form>
 ";
 
-
-echo "
-<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-	<center><table class=' col-md-12 table-condensed table-bordered' >
-		<tr>
-			<td>Codigo</td>
-			<td>Nombre</td>
-			<td>Sector</td>
-			<td>Direccion</td>
-			<td>Ultima Factura</td>
-			<td>Ultimo Mes</td>
-			<td colspan=2>Comentario</td>
-		</tr>
-		</center>	
-";
-/*while ($fila = mysql_fetch_array($consulta))
- {
-	echo "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-	<tr><td>".$fila['codigo']."</td><td>".$fila['nombre']."</td><td>".$fila['sector']."</td><td>".$fila['direccion']."</td><td>".$fila['ultima_fac']."
-	</td><td>".$fila['ultimo_mes']."</td><td>".$fila['comentario']."</td>
-	</tr>";
-}
-echo "</table>";
-*/
 echo "<table width=100%>
 <td>
 				<form action='opcionescable.php' method='POST'>

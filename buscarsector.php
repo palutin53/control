@@ -29,19 +29,23 @@ $sector = $_POST['sector'];
 		
 		";
 		echo "<h1 class='text-center'>Resultados para: '".$sector."'</h1>";
-		$consulta = mysql_query("SELECT * FROM clientes WHERE sector LIKE '%".$sector."%' ORDER BY sector",$conexion);
+		
+		$consulta = mysql_query("SELECT clientes.*, pagos.* FROM clientes,pagos WHERE sector = '".$sector."' ORDER BY codigo",$conexion);
+
+
 		echo "<div id='dvData'>
 			<table class=' col-md-12 table-condensed  bordeimpreso'>
 				<tr>
 					<td>Codigo</td>
 					<td>Nombre</td>
-					<td>Direccion</td>
 					<td>Sector</td>
-					<td>Ultima Factura</td>
-					<td>Ultimo Mes</td>
+					<td>Direccion</td>
 					<td>Comentario</td>
+					<td>NIT</td>
+					<td>Mes Pagado</td>
+					<td>No. Documento</td>
 				</tr>
-						</div>	
+				</div>	
 		";
 		$totalrows=mysql_num_rows($consulta);
 		if (empty($totalrows))
@@ -55,8 +59,8 @@ $sector = $_POST['sector'];
 			while ($fila = mysql_fetch_array($consulta))
  				{
 		echo "
-		<tr><td>".$fila['codigo']."</td><td>".$fila['nombre']."</td><td>".$fila['sector']."</td><td>".$fila['direccion']."</td><td>".$fila['ultima_fac']."
-		</td><td>".$fila['ultimo_mes']."</td><td>".$fila['anio']."</td>
+		<tr><td>".$fila['codigo']."</td><td>".$fila['nombre']."</td><td>".$fila['sector']."</td><td>".$fila['direccion']."</td>
+		<td>".$fila['comentario']."</td><td>".$fila['nit']."</td><td>".$fila['mes_pago']."</td><td>".$fila['correlativo']."</td>
 		</tr><tr>";
 		}
 		echo "</table>";

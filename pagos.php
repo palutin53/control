@@ -22,12 +22,12 @@ echo "
 			<div class='form-inline col-md-6 col-md-offset-3'>
 				<h1>Seleccione una Opcion</h1>
 					<div class='form-group'>
-						<form action='formulariorecibo.php'>
+						<form action='buscadorrecibo.php'>
 							<button type='submit' name='recibo' class='form-control btn btn-primary'>Registrar Recibo</button>
 						</form>
 					</div>
 					<div class='form-group'>
-						<form action='formulariofacturas.php'>
+						<form action='buscadorfactura.php'>
 							<button type='submit' name='factura' class='form-control btn btn-primary'>Registrar Factura</button>
 							<a class='btn btn-primary' href='opcionescable.php' role='button'>Regresar</a>
 						</form>

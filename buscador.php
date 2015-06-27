@@ -39,17 +39,16 @@ $sector = $_GET['sector'];
 			<td>Nombre</td>
 			<td>Direccion</td>
 			<td>Sector</td>
-			<td>Ultima Factura</td>
-			<td>Ultimo Mes</td>
 			<td>Comentario</td>
+			<td>NIT</td>
 		</tr>	
 ";
 
 	while ($fila = mysql_fetch_array($consulta))
  	{
 		echo "
-		<tr><td>".$fila['codigo']."</td><td>".$fila['nombre']."</td><td>".$fila['sector']."</td><td>".$fila['direccion']."</td><td>".$fila['ultima_fac']."
-		</td><td>".$fila['ultimo_mes']."</td><td>".$fila['anio']."</td>
+		<tr><td>".$fila['codigo']."</td><td>".$fila['nombre']."</td><td>".$fila['sector']."</td><td>".$fila['direccion']."</td>
+		<td>".$fila['comentario']."</td><td>".$fila['nit']."</td>
 		</tr><tr>";
 	}
 	echo "</table>";
