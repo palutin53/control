@@ -46,7 +46,12 @@ $sector = $_POST['sector'];
 =======
 >>>>>>> origin/master
 		
-		$consulta = mysql_query("SELECT clientes.*, pagos.* FROM clientes,pagos WHERE sector = '".$sector."' ORDER BY codigo",$conexion);
+//		$consulta = mysql_query("SELECT clientes.*, pagos.* FROM clientes,pagos WHERE sector = '".$sector."' ORDER BY codigo",$conexion);
+
+$resultado=mysql_query("SELECT clientes.codigo,clientes.nombre,clientes.sector, clientes.direccion ,clientes.comentario, clientes.nit 
+	FROM clientes, pagos, WHERE (demo4.DNI=demodat1.DNI AND demo4.DNI=demodat2.DNI AND demo4.DNI=demodat3.DNI) 
+	ORDER BY demodat1.Puntos+demodat2.Puntos+demodat3.Puntos DESC ",$conexion);
+
 
 
 		echo "<div id='dvData'>
