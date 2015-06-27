@@ -24,7 +24,7 @@ $sector = $_POST['sector'];
 		<script src='js/jquery-1.11.3.min.js'></script>
 		<script src='js/custom.js'></script>
 		</head>
-		<body onload='nobackbutton();'>
+		<body>
 		<div class='container'>
 		
 		";
@@ -40,7 +40,8 @@ $sector = $_POST['sector'];
 					<td>Ultima Factura</td>
 					<td>Ultimo Mes</td>
 					<td>Comentario</td>
-				</tr>	
+				</tr>
+						</div>	
 		";
 		$totalrows=mysql_num_rows($consulta);
 		if (empty($totalrows))
@@ -58,15 +59,21 @@ $sector = $_POST['sector'];
 		</td><td>".$fila['ultimo_mes']."</td><td>".$fila['anio']."</td>
 		</tr><tr>";
 		}
-		echo "</table></div>";
-		echo "<table>
+		echo "</table>";
+		echo "
 		<div class='col-md-6 top-buffer'>
 			<a class='btn btn-primary' href='principal.php' role='button'>Regresar</a>
-			<a href='javascript:imprSelec('muestra')'>Imprimir Tabla</a>
+			<input type='button' id='btnExport' value=' Export Table data into Excel ' />
 		</div>
-		</table>
 		
 		</div>
+		</div>
+		<script>
+    $('#btnExport').click(function(e) {
+        window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#dvData').html()));
+        e.preventDefault();
+    });
+    </script>
 		</body>
 		";
 		}
