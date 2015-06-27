@@ -45,7 +45,7 @@ echo "
 
 echo "
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-	<center><table border=1 width=90%>
+	<center><table class=' col-md-12 table-condensed table-bordered' >
 		<tr>
 			<td>Codigo</td>
 			<td>Nombre</td>
