@@ -111,12 +111,14 @@ fieldset[disabled] .btn-primario.active {
 .bottom-buffer { margin-bottom:20px; }
 .titulopagina{display: none;}
 
-/*table {
+.bordeimpreso {
     border:solid #000 !important;
     border-width:1px 0 0 1px !important;
+
 }
 tr, td {
     border:solid #000 !important;
     border-width:0 1px 1px 0 !important;
-}*/
+}
+/**/
 

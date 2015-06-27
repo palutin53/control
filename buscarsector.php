@@ -30,8 +30,8 @@ $sector = $_POST['sector'];
 		";
 		echo "<h1 class='text-center'>Resultados para: '".$sector."'</h1>";
 		$consulta = mysql_query("SELECT * FROM clientes WHERE sector LIKE '%".$sector."%' ORDER BY sector",$conexion);
-		echo "<div id='muestra'>
-			<table class=' col-md-12 table-condensed table-bordered'>
+		echo "<div id='dvData'>
+			<table class=' col-md-12 table-condensed  bordeimpreso'>
 				<tr>
 					<td>Codigo</td>
 					<td>Nombre</td>

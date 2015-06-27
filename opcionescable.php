@@ -16,9 +16,9 @@ echo "
 		<script src='js/jquery-1.11.3.min.js'></script>
 		<script src='js/custom.js'></script>
 		</head>
-	<body>
+	<body onload='nobackbutton();'>
 		<div class='container'>
-			<div class='form-inline col-md-10 col-md-offset-1'>
+			<div class='form-inline col-md-offset-1'>
 				<h1 class='col-md-offset-2'>Seleccione una opcion</h1>
 					<div class='form-group'>
 						<form action='pagos.php'>
