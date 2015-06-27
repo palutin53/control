@@ -9,45 +9,27 @@ echo "
 		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 		<script src='js/bootstrap.js'></script>
 		<script src='js/jquery-1.11.3.min.js'></script>
+		<script src='js/custom.js'></script>
 		</head>
-	<body>
+	<body onload='nobackbutton();'>
 		<div class='container'>
 		<div class='row'>
-			<form action='crearcliente.php' method='POST' class='col-md-6 col-md-offset-3'>
-			<h1>Ingrese los datos del recibo</h1>
-				<div class=''> 
-					<label for='date'>     Fecha:</label>
+			<form action='crearcliente.php' method='POST' class='col-md-6 col-md-offset-3 table-bordered top-buffer'>
+			<h1 class='text-center'>Ingrese los datos del recibo</h1>
+				<div class='col-md-12'>
+					<label for='codigo_cliente'>Codigo de Cliente:</label>
+					<input type='int' placeholder='Ingrese el codigo(Opcional)' name='codigo_cliente' class='form-control'>
+				</div>
+				<div class='col-md-6'> 
+					<label for='date'>Fecha:</label>
 					<input type='date'class='form-control'>
 				</div>
-				<div class=''>
-					<label for='nombre'>Nombre:</label>
-					<input type='Text' placeholder='nombre' name='nombre' class='form-control'>
+				<div class='col-md-6'>
+					<label for='numero'>Numero de recibo:</label>
+					<input type='int' placeholder='numero' name='numero' class='form-control'>
 				</div>
-				<div class=''>
-					<label for='direccion'>Direccion:</label>
-					<input type='Text' placeholder='direccion' name='direccion' class='form-control'>
-				</div>
-				<div class=''> 
-					<label for='sector'>Sector:</label>
-						<select  nam ='sector' class='form-control'>
-							<option  value='seleccione'>seleccione</option>
-							<option  value='Barberos'>Barberos</option>
-							<option  value='Encinos'>Encinos</option>
-							<option  value='Venezuela'>Venezuela</option>
-							<option  value='Mercado'>Mercado</option>
-							<option  value='Guajitos'>Guajitos</option>
-							<option  value='Justo Rufino Barrios'>Justo Rufino Barrios</option>
-							<option  value='Covi-Hode'>Covi-Hode</option>
-							<option  value='San Rafael'>San Rafael</option>
-							<option  value='Escuela'>Escuela</option>
-						</select>
-				</div>
-				<div class=''>
-					<label for='ultima_fac'>Ultima Factura:</label>
-					<input type='text' placeholder='Ultima Factura' name='ultima_fac' class='form-control'>
-				</div>
-				<div class=''>
-					<label for='ultimo_mes'>Ultimo Mes:</label>
+				<div class='col-md-6'>
+					<label for='ultimo_mes'>Mes:</label>
 					<Select placeholder='ultimo_mes' name='ultimo_mes' class='form-control'>
 						<option  value='seleccione'>seleccione</option>
 						<option  value='Enero'>Enero</option>
@@ -64,29 +46,39 @@ echo "
 						<option  value='Diciembre'>Diciembre</option>
 					<Select placeholder='anio' class='date'>
 				</div>
-				<div class=''>
-					<label for='anio'>Ultimo año:</label>
-					<select type='date' class='date form-control'>
-						<option  value='seleccione'>seleccione</option>
-						<option  value='2014'>2014</option>
-						<option  value='2015'>2015</option>
-						<option  value='2016'>2016</option>
-						<option  value='2017'>2017</option>
-						<option  value='2018'>2018</option>
-						<option  value='2019'>2019</option>
-						<option  value='2020'>2020</option>
-					</select>
+				<div class='col-md-6'> 
+					<label for='sector'>Sector:</label>
+						<select  name ='sector' class='form-control'>
+							<option  value='seleccione'>seleccione</option>
+							<option  value='Barberos'>Barberos</option>
+							<option  value='Encinos'>Encinos</option>
+							<option  value='Venezuela'>Venezuela</option>
+							<option  value='Mercado'>Mercado</option>
+							<option  value='Guajitos'>Guajitos</option>
+							<option  value='Justo Rufino Barrios'>Justo Rufino Barrios</option>
+							<option  value='Covi-Hode'>Covi-Hode</option>
+							<option  value='San Rafael'>San Rafael</option>
+							<option  value='Escuela'>Escuela</option>
+						</select>
 				</div>
-				<div class='form-group top-buffer'>
-
-					<input type='submit' class='btn btn-primary'>
-					
+				<div class='col-md-12'>
+					<label for='nombre'>Nombre:</label>
+					<input type='Text' placeholder='nombre' name='nombre' class='form-control'>
+				</div>
+				<div class='col-md-12'>
+					<label for='direccion'>Direccion:</label>
+					<input type='Text' placeholder='direccion' name='direccion' class='form-control'>
+				</div>
+				<div class='col-md-12'>
+					<label for='comentario'>Comentario:</label>
+					<input type='Text' placeholder='comentario' name='comentario' class='form-control'>
+				</div>
+				<div class='col-md-6 top-buffer bottom-buffer'>
 					<input type='reset' class='btn btn-primary'>
-					
-						<form action='pagos.php' method='POST'>
-						 	<button type='submit' name='regresar' id='regresar'class='btn btn-primary'>Regresar</button>
-						</form>
-					
+					<a class='btn btn-primary' href='pagos.php' role='button'>Regresar</a>
+				</div>
+				<div class='col-md-6 top-buffer bottom-buffer'>
+					<input type='submit' class='btn btn-primary'>
 				</div>
 			</form>    
 			</div>
@@ -95,3 +87,4 @@ echo "
 <html>
 ";
 ?>
+

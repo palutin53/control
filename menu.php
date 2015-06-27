@@ -8,30 +8,34 @@ $contrasena = $_SESSION['contrasena'];
 echo "
 <html>
 	<head>
-		<tittle></tittle>
+		<tittle class='titulopagina'>Telesat</tittle>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
 		<link rel='stylesheet' type='text/css' href='css/bootstrap.css' />
 		<link rel='stylesheet' type='text/css' href='css/style.css' />
-		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-	</head>
-	<body>
-		<h1 class='text-center'>Seleccione una Opcion</h1>
-		
-			<div class='cableinternet'>
-				<div class='menucable'>
-				<img src='images/television.jpg' class='img-rounded' alt='television' height='140px'width='180px'></img>
-					<form action='opcionescable.php'>
-						<button type='submit' class='btn btn-primary' name='cable'id='botoncable'>CABLE</button>
-					</form>
+		<script src='js/bootstrap.js'></script>
+		<script src='js/jquery-1.11.3.min.js'></script>
+		<script src='js/custom.js'></script>
+		</head>
+<body onload='nobackbutton();'>
+	<div class='container'>
+		<div class='row menucable'>
+			<h1 class='text-center'>Seleccione una Opcion</h1>
+				<div class='cableinternet'>
+					<img src='images/television.jpg' class='img-bordered menuimagen' alt='television' height='180px'width='220px'></img>
+					<div class='clearfix'></div>
+					<a class='btn btn-primary top-buffer col-md-offset-3' href='opcionescable.php' role='button'>Cable</a>
 				</div>
-				<div class='menuinternet'>
-					<img src='images/internet.jpg' class='img-rounded' alt='internet' height='140px'width='180px'></img>
-					<form action='opcionesinternet.php'>
-						<button type='submit' class='btn btn-primary' name='intenet'id='botoninternet'>INTERNET</button>
-					</form>
-				</div
-			</div>	
-		
-	</body>
+				<div class='cableinternet'>
+					<img src='images/internet.jpg' class='img-bordered menuimagen' alt='internet' height='180px'width='220px'></img>
+					<div class='clearfix'></div>
+					<a class='btn btn-primary top-buffer col-md-offset-3' href='opcionesinternet.php' role='button'>Internet</a>
+				</div>
+		</div>
+	</div>
+	<footer class='piedepagina'>
+	</footer>	
+</body>
 
 </html>
 ";

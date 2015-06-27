@@ -8,37 +8,56 @@ $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
 
 
-echo  "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-
-Buscar por nombre<br><br>
-<table width=60%>
-<tr><td>
-<form action='eliminar.php' method='GET'>
-<tr><td>Codigo: </td><td>Nombre:</td><td>Sector: </td></tr>
-<tr><td>
-<input type='text' name='codigo' placeholder='ingresa codigo' id='codigo' ></td>
-<td><input type='text' name='nombre' placeholder='ingresa valor de busqueda' id='nombre'></td>
-		<td><Select placeholder='sector' name='sector' value='sector' id='sector'>
-		<option selected='selected' value=0>Selecciona sector</option>
-			<option  value='Barberos'>Barberos</option>
-			<option  value='Encinos'>Encinos</option>
-			<option  value='Venezuela'>Venezuela</option>
-			<option  value='Mercado'>Mercado</option>
-			<option  value='Guajitos'>Guajitos</option>
-			<option  value='Justo_Rufino_Barrios'>Justo Rufino Barrios</option>
-			<option  value='Covi-Hode'>Covi-Hode</option>
-			<option  value='San_Rafael'>San Rafael</option>
-			<option  value='Escuela'>Escuela</option>
-		</td>
-		<td>
-<input type='submit' name='Busqueda' value='busqueda' align='right'></form>
-</td><td colspan=2>
-				<form action='adminclientes.php' method='POST'>
-					<center><button type='submit' name='regresar' id='regresar'>Regresar</button></center>
-				</form>
-			</td></tr>
-</table>
-</form>";
-
-
+echo  "
+<head>
+		<tittle></tittle>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<link rel='stylesheet' type='text/css' href='css/bootstrap.css' />
+		<link rel='stylesheet' type='text/css' href='css/style.css' />
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+		<script src='js/bootstrap.js'></script>
+		<script src='js/jquery-1.11.3.min.js'></script>
+		<script src='js/custom.js'></script>
+		</head>
+<body onload='nobackbutton();'>
+	<div class='container'>
+		<div class='row'>
+			<form action='eliminar.php' method='GET' class='col-md-6 col-md-offset-3 table-bordered top-buffer'>
+			<h1 class='text-center'>Eliminar Cliente</h1>
+			<h2 class='text-center'>Buscador</h2>
+				<div class='col-md-12'>
+					<label for='codigo_cliente'>Codigo de Cliente:</label>
+					<input type='int' placeholder='Ingrese el codigo' name='codigo_cliente' class='form-control'>
+				</div>
+				<div class='col-md-12'>
+					<label for='nombre'>Nombre:</label>
+					<input type='Text' placeholder='nombre' name='nombre' class='form-control'>
+				</div>
+				<div class='col-md-12'> 
+					<label for='sector'>Sector:</label>
+						<select  name ='sector' class='form-control'>
+							<option  value='seleccione'>seleccione</option>
+							<option  value='Barberos'>Barberos</option>
+							<option  value='Encinos'>Encinos</option>
+							<option  value='Venezuela'>Venezuela</option>
+							<option  value='Mercado'>Mercado</option>
+							<option  value='Guajitos'>Guajitos</option>
+							<option  value='Justo Rufino Barrios'>Justo Rufino Barrios</option>
+							<option  value='Covi-Hode'>Covi-Hode</option>
+							<option  value='San Rafael'>San Rafael</option>
+							<option  value='Escuela'>Escuela</option>
+						</select>
+				</div>
+				<div class='col-md-6 top-buffer bottom-buffer'>
+					<input type='reset' class='btn btn-primary'>
+					<a class='btn btn-primary' href='adminclientes.php' role='button'>Regresar</a>
+				</div>
+				<div class='col-md-6 top-buffer bottom-buffer'>
+					<input type='submit' name='Busqueda' Value='Buscar' class='btn btn-primary'>
+				</div>
+			</form>    
+			</div>
+		</div>
+</body>
+";
 ?>

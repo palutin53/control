@@ -1,49 +1,38 @@
 <?php
-//include CSS Style Sheet
-   echo "<link rel='stylesheet' type='text/css' href='css/bootstrap.css' /><link rel='stylesheet' type='text/css' href='css/style.css' /> ";
 echo "
 <html>
 	<head>
-		<tittle></tittle>
+		<tittle class='titulopagina'>Telesat</tittle>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<link rel='stylesheet' type='text/css' href='css/bootstrap.css' />
+		<link rel='stylesheet' type='text/css' href='css/style.css' />
+		<script src='js/bootstrap.js'></script>
+		<script src='js/jquery-1.11.3.min.js'></script>
+		<script src='js/custom.js'></script>
+		</head>
 	</head>
-	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-		<body>
-		
-			<center><img src='images/img1.png' class='imageninicio' alt='Telesat Guatemala'></img></center>
-			<center>
-			<table class='enviarlog'>
-				<h1 class='logintitle'>Login</h1>
-				<form action='login.php' method='POST'>
-					
-						<tr>
-							<td>
-							<div class='form-group'>	
-								<label>Usuario</label>
-								<input type='text' class='form-control' placeholder='Nombre' name='usuario' width=50%>
-						    </div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-							<div class='form-group'>
-							<label>Clave</label>
-								<input type='password' class='form-control' placeholder='Contraseña' name='contrasena' width=50%><center>
-							</div>
-							</td>
-						</tr>
-						
-						<tr>
-							<td>
-								<button  type='submit' class='btn btn-primary' name='ingresar'>Ingresar</button>
-							</td>	
-						</tr>
-					
+	<body onload='nobackbutton();'>
+		<div class='container '>
+			<div class='row'>
+				<center><img src='images/img1.png' class='imageninicio' alt='Telesat Guatemala'></img></center>
+				<h1 class='logintitle text-center'>LOGIN</h1>
+				<form action='login.php' method='POST' class='col-md-6 col-md-offset-3' >
+					<div class='col-md-6'>	
+						<label for='usuario'>Usuario</label>
+						<input type='text' class='form-control' placeholder='Nombre' name='usuario' width=50%>
+				    </div>
+					<div class='col-md-6'>
+						<label for='contrasena'>Password</label>
+						<input type='password' class='form-control' placeholder='Contraseña' name='contrasena' width=50%>
+					</div>
+					<div class='col-md-offset-5 '>
+						<button  type='submit' class='btn btn-primary top-buffer' name='ingresar'>Ingresar</button>
+					</div>
 				</form>
-			</table>
-			</center>
-		</body>
+			</div>
+		</div>
+	</body>
 </html>
-	
 ";
-
 ?>

@@ -1,6 +1,4 @@
 <?php
-//include CSS Style Sheet
-   echo "<link rel='stylesheet' type='text/css' href='style.css' />";
 session_start();
 
 $usuario = $_SESSION['usuario'];
@@ -15,55 +13,63 @@ mysql_select_db("controlcable");
 
 $sector = $_POST['sector'];
 
-		echo "	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />";
-		echo "Resultados para: '".$sector."'";
-	$consulta = mysql_query("SELECT * FROM clientes WHERE sector LIKE '%".$sector."%' ORDER BY sector",$conexion);
-
-		echo "
-<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-	<table border=1 width=100%>
-		<tr>
-			<td>Codigo</td>
-			<td>Nombre</td>
-			<td>Sector</td>
-			<td>Direccion</td>
-			<td>Ultima Factura</td>
-			<td>Ultimo Mes</td>
-			<td colspan=2>Comentario</td>
-		</tr>	
-";
-
-
+		echo "	
+		<head>
+		<tittle></tittle>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<link rel='stylesheet' type='text/css' href='css/bootstrap.css' media='screen,print' />
+		<link rel='stylesheet' type='text/css' href='css/style.css' />
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+		<script src='js/bootstrap.js'></script>
+		<script src='js/jquery-1.11.3.min.js'></script>
+		<script src='js/custom.js'></script>
+		</head>
+		<body onload='nobackbutton();'>
+		<div class='container'>
+		
+		";
+		echo "<h1 class='text-center'>Resultados para: '".$sector."'</h1>";
+		$consulta = mysql_query("SELECT * FROM clientes WHERE sector LIKE '%".$sector."%' ORDER BY sector",$conexion);
+		echo "<div id='muestra'>
+			<table class=' col-md-12 table-condensed table-bordered'>
+				<tr>
+					<td>Codigo</td>
+					<td>Nombre</td>
+					<td>Direccion</td>
+					<td>Sector</td>
+					<td>Ultima Factura</td>
+					<td>Ultimo Mes</td>
+					<td>Comentario</td>
+				</tr>	
+		";
 		$totalrows=mysql_num_rows($consulta);
-if (empty($totalrows))
- {
- 	echo "<br><br>";
-  echo "No se han encontrado resultados al buscar <strong>$sector</strong>.<br> <br>Comprueba si está bién escrito e inténtalo de nuevo.";
-  echo "<form action='principal.php'>
-	<input type='submit' name='regresar' value='regresar'>
-	</form>
-	";
-  } else{
-
-
-
-	while ($fila = mysql_fetch_array($consulta))
- 	{
-		echo "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+		if (empty($totalrows))
+		 {
+ 		echo "<h3 class='text-center'>No se han encontrado resultados al buscar <strong>$sector</strong>.<br> <br>Comprueba si está bién escrito e inténtalo de nuevo.</h3>";
+  		echo "<div class='col-md-12 top-buffer bottom-buffer'>
+				<a class='btn btn-primary' href='formulariobuscador.php' role='button'>Regresar</a>
+			  </div>
+		";
+ 		 } else{
+			while ($fila = mysql_fetch_array($consulta))
+ 				{
+		echo "
 		<tr><td>".$fila['codigo']."</td><td>".$fila['nombre']."</td><td>".$fila['sector']."</td><td>".$fila['direccion']."</td><td>".$fila['ultima_fac']."
 		</td><td>".$fila['ultimo_mes']."</td><td>".$fila['anio']."</td>
 		</tr><tr>";
-	}
-	echo "</table>";
-	echo "<table width=100%><tr><td>
-	<form action='principal.php'>
-	<center>
-	<input type='submit' name='regresar' value='regresar'>
-	<center>
-	</form></tr>
-	</table>";
-
-}
+		}
+		echo "</table></div>";
+		echo "<table>
+		<div class='col-md-6 top-buffer'>
+			<a class='btn btn-primary' href='principal.php' role='button'>Regresar</a>
+			<a href='javascript:imprSelec('muestra')'>Imprimir Tabla</a>
+		</div>
+		</table>
+		
+		</div>
+		</body>
+		";
+		}
 
 mysql_close($conexion);
 

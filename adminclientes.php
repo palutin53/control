@@ -8,36 +8,31 @@ $contrasena = $_SESSION['contrasena'];
 echo "
 <html>
 	<head>
-		<tittle></tittle>
+		<tittle class='titulopagina'>Telesat</tittle>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
 		<link rel='stylesheet' type='text/css' href='css/bootstrap.css' />
 		<link rel='stylesheet' type='text/css' href='css/style.css' />
-		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-	</head>
-	<body>
-		<div class='cajaacciones'>
-		<h1>Seleccione una Opcion</h1>
-			<div class='listabotones'>
-					<form action='formularioclientes.php' method='POST'>
-						<button type='submit' name='nuevocliente' class='btn-primario' id='registrarclientes'>Registrar Nuevo Cliente</button>
-					</form>
-				</div>
-				<div class='listabotones'>
-					<form action='eliminarcliente.php' method='POST'>
-						<button type='submit' name='eliminarcliente' class='btn-primario' id='eliminarclientes'>Eliminar Clientes</button>
-					</form>
-				</div>
-				<div class='listabotones'>
-					<form action='editarclientes.php' method='POST'>
-						<button type='submit' name='editarcliente'  class='btn-primario'id='editarclientes'>Editar Clientes</button>
-					</form>
-				</div>
-				<div class='listabotones'>
-					<form action='opcionescable.php' method='POST'>
-						<button type='submit' name='regresar' class='btn-primario' id='regresar'>Regresar</button>
-					</form>
-				</div>
+		<script src='js/bootstrap.js'></script>
+		<script src='js/jquery-1.11.3.min.js'></script>
+		<script src='js/custom.js'></script>
+		</head>
+<body onload='nobackbutton();'>
+	<div class='container'>
+		<div class='form-inline col-md-10'>
+			<div class='form-inline col-md-10 col-md-offset-3'>
+				<h1 class='col-md-offset-2'>Seleccione una opcion</h1>
+					<div class='form-group'>
+							<a class='btn btn-primary' href='formularioclientes.php' role='button'>Registrar Nuevo Cliente</a>
+							<a class='btn btn-primary' href='eliminarcliente.php' role='button'>Eliminar Clientes</a>
+							<a class='btn btn-primary' href='editarclientes.php' role='button'>Editar Clientes</a>
+							<a class='btn btn-primary' href='opcionescable.php' role='button'>Regresar</a>
+						
+					</div>
+			</div>	
 		</div>
-	</body>
+	</div>
+</body>
 </html>
 ";
 

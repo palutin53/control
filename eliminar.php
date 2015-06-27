@@ -17,13 +17,26 @@ $sector = $_GET['sector'];
 $codigo = $_GET['codigo'];
 
 
-		echo "	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />";
+		echo "	<html>
+	<head>
+		<tittle class='titulopagina'>Telesat</tittle>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<link rel='stylesheet' type='text/css' href='css/bootstrap.css' />
+		<link rel='stylesheet' type='text/css' href='css/style.css' />
+		<script src='js/bootstrap.js'></script>
+		<script src='js/jquery-1.11.3.min.js'></script>
+		<script src='js/custom.js'></script>
+		</head>
+<body onload='nobackbutton();'>
+<div class='container'>
+<div class='row'>
+";
 		echo "Resultados para: '".$codigo."' '".$nombre."' ' ".$sector."'";
 	$consulta = mysql_query("SELECT * FROM clientes WHERE codigo LIKE '%$codigo%' OR nombre LIKE '%".$nombre."%' OR  sector LIKE '%$sector%' ORDER BY sector",$conexion);
 
 	echo "
-<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-	<table border=1 width=100%>
+	<table class='table-condensed table-bordered'>
 		<tr>
 			<td>Codigo</td>
 			<td>Nombre</td>
@@ -46,22 +59,31 @@ while ($fila = mysql_fetch_array($consulta))
 	</tr>";
 }
 
-	echo "<table width=100%><tr><td>
-	<form action='eliminarcliente.php'>
-	<center>
-	<input type='submit' name='regresar' value='regresar'>
-	<center>
-	</form></tr>
-	</table>";
+	echo "</table><div class='form-inline col-md-10'>
+			<div class='form-inline col-md-10 col-md-offset-3 top-buffer'>
+					<div class='form-group'>
+						<a class='btn btn-primary' href='eliminarcliente.php' role='button'>Regresar</a>
+					</div>
+			</div>	
+		</div>";
 
 	$totalrows=mysql_num_rows($consulta);
 if (empty($totalrows))
  {
- 	echo "<br><br>";
+ 	echo "";
   echo "No se han encontrado resultados al buscar <strong>$nombre</strong>.<br> <br>Comprueba si está bién escrito e inténtalo de nuevo.";
-  echo "<form action='eliminarcliente.php'>
-	<input type='submit' name='regresar' value='regresar'>
-	</form>
+  echo "<div class='form-inline col-md-10'>
+			<div class='form-inline col-md-10 col-md-offset-3'>
+					<div class='form-group'>
+						<a class='btn btn-primary' href='eliminarcliente.php' role='button'>Regresar</a>
+					</div>
+			</div>	
+		</div>
+		</div>
+		</div>
+	</body>
+
+
 	";
   }
 

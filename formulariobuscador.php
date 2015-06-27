@@ -9,8 +9,9 @@ echo  "
 		<link rel='stylesheet' type='text/css' href='css/bootstrap.css' />
 		<link rel='stylesheet' type='text/css' href='css/style.css' />
 		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+		<script src='js/custom.js'></script>
 	</head>
-	<body>
+	<body onload='nobackbutton();'>
 		<div class=container>
 		<div class=row >	
 			<form action='buscador.php' method='GET' class='col-md-4 col-md-offset-3'>

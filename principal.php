@@ -20,8 +20,9 @@ echo "
 		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 		<script src='js/bootstrap.js'></script>
 		<script src='js/jquery-1.11.3.min.js'></script>
+		<script src='js/custom.js'></script>
 		</head>
-		<body>
+		<body onload='nobackbutton();'>
 		<form action='buscarsector.php' method='POST'>
 		<table width=30%>
 		<tr><td>Busqueda por sector:</td><td>
