@@ -57,7 +57,7 @@ echo "
 		</tr>
 		</center>	
 ";
-while ($fila = mysql_fetch_array($consulta))
+/*while ($fila = mysql_fetch_array($consulta))
  {
 	echo "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 	<tr><td>".$fila['codigo']."</td><td>".$fila['nombre']."</td><td>".$fila['sector']."</td><td>".$fila['direccion']."</td><td>".$fila['ultima_fac']."
@@ -65,7 +65,7 @@ while ($fila = mysql_fetch_array($consulta))
 	</tr>";
 }
 echo "</table>";
-
+*/
 echo "<table width=100%>
 <td>
 				<form action='opcionescable.php' method='POST'>

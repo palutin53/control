@@ -48,7 +48,7 @@ $sector = $_POST['sector'];
 		 {
  		echo "<h3 class='text-center'>No se han encontrado resultados al buscar <strong>$sector</strong>.<br> <br>Comprueba si está bién escrito e inténtalo de nuevo.</h3>";
   		echo "<div class='col-md-12 top-buffer bottom-buffer'>
-				<a class='btn btn-primary' href='formulariobuscador.php' role='button'>Regresar</a>
+				<a class='btn btn-primary' href='principal.php' role='button'>Regresar</a>
 			  </div>
 		";
  		 } else{
