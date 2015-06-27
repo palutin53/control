@@ -23,12 +23,15 @@ echo "
 				<h1 class='col-md-offset-2'>Seleccione una Opcion</h1>
 					<div class='form-group'>
 <<<<<<< HEAD
+<<<<<<< HEAD
 					<a href='menu.php' class='btn btn-primary btn-default' role='button'><span class='glyphicon glyphicon-home' aria-hidden='true'></span>  Inicio</a>				
 					<a class='btn btn-primary' href='formulariorecibo.php' role='button'>Registrar Recibo</a>
 					<a class='btn btn-primary' href='formulariofacturas.php' role='button'>Registrar Factura</a>
 					<a class='btn btn-primary' href='opcionescable.php' role='button'>Regresar</a>
 					<a href='index.php' class='btn btn-primary btn-default' role='button'><span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>  Cerrar Sesion</a>	
 =======
+=======
+>>>>>>> origin/master
 						<form action='buscadorrecibo.php'>
 							<button type='submit' name='recibo' class='form-control btn btn-primary'>Registrar Recibo</button>
 						</form>

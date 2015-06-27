@@ -31,6 +31,7 @@ $sector = $_POST['sector'];
 		";
 		echo "<h1 class='text-center'>Resultados para: '".$sector."'</h1>";
 <<<<<<< HEAD
+<<<<<<< HEAD
 		$consulta = mysql_query("SELECT * FROM clientes WHERE sector LIKE '%".$sector."%' ORDER BY sector",$conexion);
 		echo "
 
@@ -42,6 +43,8 @@ $sector = $_POST['sector'];
 		<div id='dvData'>
 			<table  class='bordeimpreso col-md-12 table table-striped table-bordered table table-hover table-condensed table-responsive '>
 =======
+=======
+>>>>>>> origin/master
 		
 		$consulta = mysql_query("SELECT clientes.*, pagos.* FROM clientes,pagos WHERE sector = '".$sector."' ORDER BY codigo",$conexion);
 
@@ -74,10 +77,13 @@ $sector = $_POST['sector'];
  				{
 		echo "
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<tr><td>".$fila['codigo']."</td><td>".$fila['nombre']."</td><td>".$fila['sector']."</td><td>".$fila['direccion']."</td><td>".$fila['ultima_fac']."
 		</td><td>".$fila['ultimo_mes']."</td><td>".$fila['anio']."</td>
 		</tr>";
 =======
+=======
+>>>>>>> origin/master
 		<tr><td>".$fila['codigo']."</td><td>".$fila['nombre']."</td><td>".$fila['sector']."</td><td>".$fila['direccion']."</td>
 		<td>".$fila['comentario']."</td><td>".$fila['nit']."</td><td>".$fila['mes_pago']."</td><td>".$fila['correlativo']."</td>
 		</tr><tr>";

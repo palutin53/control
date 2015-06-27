@@ -1,7 +1,13 @@
 <?php
 session_start();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+$_SESSION['usuario'];
+$_SESSION['contrasena'];
+>>>>>>> origin/master
 
 $_SESSION['usuario'];
 $_SESSION['contrasena'];
