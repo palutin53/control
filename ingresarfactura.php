@@ -1,38 +1,36 @@
 <?php
-
 session_start();
-
 $contador = 0;
-
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
 //····························································································································
+$addcodigo = $_POST['codigo'];
+$addfecha = $_POST['fecha_pago'];
+$addcorrelativo = $_POST['correlativo'];
+$addmes = $_POST['mes'];
+$addsector = $_POST['sector'];
 $addnombre = $_POST['nombre'];
-$addsector = $_POST['sector'];	
 $adddireccion = $_POST['direccion'];
-$sector = $_POST['sector'];
 $addcomentario = $_POST['comentario'];
 $addnit = $_POST['nit'];
-
-// comprobar si el usuario existe en la bd
-
+//-----------------------------------------------
 $conexion = mysql_connect("localhost","root","");
 if(!$conexion){
 	die ("ERROR: ".mysql_error());
 } 
-
 mysql_select_db("controlcable",$conexion);
 
 
-$consulta = mysql_query("SELECT * FROM clientes",$conexion);
+$consulta = mysql_query("SELECT * FROM pagos",$conexion);
 
 while ($fila = mysql_fetch_array($consulta)){
-	if($fila['nombre'] == $addnombre & $fila['direccion'] == $adddireccion){
+	if($fila['nombre'] == $addnombre & $fila['direccion'] == $adddireccion) & $fila['codigo'] == $codigo 
+	& $fila['correlativo'] == $addcorrelativo & $fila['sector'] == $addsector & $fila['mes'] == $addmes
+	{
 			$contador++;
 	} else {}
 }
-
-
+mysql_close($conexion);
 echo "
 <html>
 	<head>
@@ -46,12 +44,14 @@ echo "
 		<script src='js/custom.js'></script>
 		</head>
 	<body onload='nobackbutton();'>
-
 ";
-
+$conexion = mysql_connect("localhost","root","");
+if(!$conexion){
+	die ("ERROR: ".mysql_error());
+}
 if( $contador == 0 ){
-if(!mysql_query("INSERT INTO clientes(codigo,nombre,sector,direccion,comentario,nit,usuario)
-	VALUES('','$addnombre','$addsector','$adddireccion','$addcomentario','$addnit','$usuario')")){
+if(!mysql_query("INSERT INTO pagos(codigo,confirmacionpago,nombre,direccion,sector,fecha_pago,mes,correlativo,nit,comentario,usuario)
+	VALUES('','',$addnombre','$adddireccion','$addsector','$addfecha_pago','$addmes','$addcorrelativo','addnit','addcomentario','$usuario')")){
 	die ("
 	ERROR: <br><br>
 	<div class='container'>
@@ -82,7 +82,7 @@ echo "
 ";
 }
 
-
+mysql_close($conexion);
 }
 else{
 	echo "Este Cliente ya existe";
@@ -103,5 +103,4 @@ echo "
 </body>
 
 ";
-mysql_close($conexion);
 ?>

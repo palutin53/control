@@ -2,7 +2,7 @@
 
 // ································CABLE····································································
 
-//TABLA DE CLIENTES·············································································································································
+//·····························································TABLA DE CLIENTES················································································
 //conexion=================================================================================================================================
 echo "CABLE";
 echo "<br><br>";
@@ -24,15 +24,13 @@ mysql_select_db("controlcable",$conexion);
 $clientes = "CREATE TABLE clientes(
 	codigo int NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY(codigo),
-	nombre char(25) NOT NULL,
-	sector char(25) NOT NULL,
-	direccion char(50) NOT NULL,
-	ultima_fac char(20),
-	ultimo_rec char(20),
-	ultimo_mes char(10),
-	anio int,
-	comentario char(200)
-)";
+	nombre char(50) NOT NULL,
+	sector char(50) NOT NULL,
+	direccion char(80) NOT NULL,
+	comentario char(200),
+	nit int NOT NULL,
+	usuario char(25)
+)AUTO_INCREMENT = 10001";
 if(!mysql_query($clientes,$conexion)){
 	die ("no he podido crear clientes: ". mysql_error());
 	echo "<br />";
@@ -42,24 +40,38 @@ if(!mysql_query($clientes,$conexion)){
 }
 ///cerrar conexion=================================================================================================================================
 mysql_close($conexion);
-//Contenido de prueba=============================================================================================================================
+
+//····································································TABLA DE PAGOS ·········································································
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
 	echo "<br />";
 } 
 mysql_select_db("controlcable",$conexion);
-if(!mysql_query("INSERT INTO clientes (codigo, nombre, sector, direccion, ultima_fac, ultimo_rec, ultimo_mes,anio,comentario)
-	VALUES (10001,'Pablo Lutin','Barberos','20 calle A  9-07','F20192','R23423','Abril',2015,'Cliente quedo pendiente de pagar en 10 dias')
-	")){
-		echo "No se ha podido crear contenido de prueba para Logs: ".mysql_error();
-echo "<br />";
+$pagos = "CREATE TABLE pagos(
+	confirmacionpago int NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY(confirmacionpago),
+	codigo int NOT NULL,
+	FOREIGN KEY(codigo) REFERENCES clientes(codigo),
+	nombre char(25) NOT NULL,
+	direccion char(80) NOT NULL,
+	sector char(25) NOT NULL,
+	fecha_pago char(90) NOT NULL,
+	mes_pago char(15) NOT NULL,
+	numero char(30) NOT NULL,
+	NIT int NOT NULL,
+	comentario char(120) NOT  NULL,
+	usuario char(25) NOT NULL
+)AUTO_INCREMENT = 53000";
+if(!mysql_query($pagos,$conexion)){
+	die ("no he podido crear pagos: ". mysql_error());
+	echo "<br />";
 } else {
-	echo "Contenido de prueba para Logs Creado con Exito";
+	echo "pagos ha sido creado";
 	echo "<br />";
 }
 mysql_close($conexion);
-//TABLA DE USUARIOS·············································································································································
+//····································································TABLA DE USUARIOS·········································································
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
@@ -81,7 +93,8 @@ if(!mysql_query($usuarios,$conexion)){
 	echo "Usuarios ha sido creado";
 	echo "<br />";
 }
-//Contenido de prueba=============================================================================================================================
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
@@ -94,11 +107,13 @@ if(!mysql_query("INSERT INTO usuarios (codigo, nombre, usuario, contrasena, perm
 		echo "No se ha podido crear contenido de prueba para Logs: ".mysql_error();
 echo "<br />";
 } else {
-	echo "Contenido de prueba para Logs Creado con Exito";
+	echo "Contenido de prueba para usuarios Creado con Exito";
 	echo "<br />";
 }
 mysql_close($conexion);
-//TABLA DE LOGS·············································································································································
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//···································································TABLA DE LOGS··········································································
 //conexion=================================================================================================================================
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
@@ -129,27 +144,11 @@ if(!mysql_query($logs,$conexion)){
 }
 ///cerrar conexion=================================================================================================================================
 mysql_close($conexion);
-//Contenido de prueba=============================================================================================================================
-$conexion = mysql_connect("localhost","root","");
-if (!$conexion){
-	die ("no he podido conectar: ". mysql_error());
-} 
-mysql_select_db("controlcable",$conexion);
-if(!mysql_query("INSERT INTO logs (utc, anio, mes, dia, hora, minuto, segundo, ip, navegador, usuario, contrasena)
-	VALUES (0000000,2015,06,25,18,24,02,'127.0.0.1','chrome','palutin','soylacomadreja1')
-	")){
-	echo "No se ha podido crear contenido de prueba para Logs: ".mysql_error();
-echo "<br />";
-} else {
-	echo "Contenido de prueba para Logs Creado con Exito";
-	echo "<br />";
-}
-mysql_close($conexion);
 // ································INTERNET·································································································
-
-//TABLA DE CLIENTES·············································································································································
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//···················································TABLA DE CLIENTES··························································································
 //conexion=================================================================================================================================
-echo "INTERNET";
+echo "<CENTER>INTERNET</CENTER>";
 echo "<br><br>";
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
@@ -157,7 +156,7 @@ if (!$conexion){
 } 
 //base de datos==================================================================================================================================
 
-if(mysql_query("CREATE DATABASE controlcable", $conexion)){
+if(mysql_query("CREATE DATABASE controlinternet", $conexion)){
 	echo "se ha creado la base de datos";
 	echo "<br />";
 } else{
@@ -165,19 +164,17 @@ if(mysql_query("CREATE DATABASE controlcable", $conexion)){
 	echo "<br />";
 } 
 //Tabla==========================================================================================================================================
-mysql_select_db("controlcable",$conexion);
+mysql_select_db("controlinternet",$conexion);
 $clientes = "CREATE TABLE clientes(
 	codigo int NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY(codigo),
-	nombre char(25) NOT NULL,
-	sector char(25) NOT NULL,
-	direccion char(50) NOT NULL,
-	ultima_fac char(20),
-	ultimo_rec char(20),
-	ultimo_mes char(10),
-	anio int,
-	comentario char(200)
-)";
+	nombre char(50) NOT NULL,
+	sector char(50) NOT NULL,
+	direccion char(80) NOT NULL,
+	comentario char(200),
+	nit int NOT NULL,
+	usuario char(25) NOT NULL
+)AUTO_INCREMENT = 10001";
 if(!mysql_query($clientes,$conexion)){
 	die ("no he podido crear clientes: ". mysql_error());
 	echo "<br />";
@@ -187,24 +184,78 @@ if(!mysql_query($clientes,$conexion)){
 }
 ///cerrar conexion=================================================================================================================================
 mysql_close($conexion);
-//Contenido de prueba=============================================================================================================================
+//····································································TABLA DE PAGOS ·········································································
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
 	echo "<br />";
 } 
-mysql_select_db("controlcable",$conexion);
-if(!mysql_query("INSERT INTO clientes (codigo, nombre, sector, direccion, ultima_fac, ultimo_rec, ultimo_mes,anio,comentario)
-	VALUES (10001,'Pablo Lutin','Barberos','20 calle A  9-07','F20192','R23423','Abril',2015,'Cliente quedo pendiente de pagar en 10 dias')
+mysql_select_db("controlinternet",$conexion);
+$pagos = "CREATE TABLE pagos(
+	confirmacionpago int NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY(confirmacionpago),
+	codigo int NOT NULL,
+	FOREIGN KEY(codigo) REFERENCES clientes(codigo),
+	nombre char(25) NOT NULL,
+	direccion char(80) NOT NULL,
+	sector char(25) NOT NULL,
+	fecha_pago char(90) NOT NULL,
+	mes_pago char(15) NOT NULL,
+	numero char(30) NOT NULL,
+	NIT int,
+	comentario char(120) NOT  NULL,
+	usuario char(25) NOT NULL
+)AUTO_INCREMENT = 18000";
+if(!mysql_query($pagos,$conexion)){
+	die ("no he podido crear usuarios: ". mysql_error());
+	echo "<br />";
+} else {
+	echo "Usuarios ha sido creado";
+	echo "<br />";
+}
+mysql_close($conexion);
+//····································································TABLA DE USUARIOS·········································································
+$conexion = mysql_connect("localhost","root","");
+if (!$conexion){
+	die ("no he podido conectar: ". mysql_error());
+	echo "<br />";
+} 
+mysql_select_db("controlinternet",$conexion);
+$usuarios = "CREATE TABLE usuarios(
+	codigo int NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY(codigo),
+	nombre char(25) NOT NULL,
+	usuario char(40) NOT NULL,
+	contrasena char(20) NOT  NULL,
+	permisos int NOT NULL
+)";
+if(!mysql_query($usuarios,$conexion)){
+	die ("no he podido crear usuarios: ". mysql_error());
+	echo "<br />";
+} else {
+	echo "Usuarios ha sido creado";
+	echo "<br />";
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$conexion = mysql_connect("localhost","root","");
+if (!$conexion){
+	die ("no he podido conectar: ". mysql_error());
+	echo "<br />";
+} 
+mysql_select_db("controlinternet",$conexion);
+if(!mysql_query("INSERT INTO usuarios (codigo, nombre, usuario, contrasena, permisos)
+	VALUES (101,'Pablo Lutin', 'palutin', 'soylacomadreja1','1')
 	")){
 		echo "No se ha podido crear contenido de prueba para Logs: ".mysql_error();
 echo "<br />";
 } else {
-	echo "Contenido de prueba para Logs Creado con Exito";
+	echo "Contenido de prueba para usuarios Creado con Exito";
 	echo "<br />";
 }
 mysql_close($conexion);
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //TABLA DE LOGS·············································································································································
 //conexion=================================================================================================================================
 $conexion = mysql_connect("localhost","root","");
@@ -213,7 +264,7 @@ if (!$conexion){
 	echo "<br />";
 } 
 //Tabla==========================================================================================================================================
-mysql_select_db("controlcable",$conexion);
+mysql_select_db("controlinternet",$conexion);
 $logs = "CREATE TABLE logs(
 	utc int,
 	anio int,
@@ -236,21 +287,4 @@ if(!mysql_query($logs,$conexion)){
 }
 ///cerrar conexion=================================================================================================================================
 mysql_close($conexion);
-//Contenido de prueba=============================================================================================================================
-$conexion = mysql_connect("localhost","root","");
-if (!$conexion){
-	die ("no he podido conectar: ". mysql_error());
-} 
-mysql_select_db("controlcable",$conexion);
-if(!mysql_query("INSERT INTO logs (utc, anio, mes, dia, hora, minuto, segundo, ip, navegador, usuario, contrasena)
-	VALUES (0000000,2015,06,25,18,24,02,'127.0.0.1','chrome','palutin','soylacomadreja1')
-	")){
-	echo "No se ha podido crear contenido de prueba para Logs: ".mysql_error();
-echo "<br />";
-} else {
-	echo "Contenido de prueba para Logs Creado con Exito";
-	echo "<br />";
-}
-
-
 ?>

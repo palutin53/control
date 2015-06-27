@@ -25,10 +25,6 @@ echo  "
 			<h1 class='text-center'>Editar Cliente</h1>
 			<h2 class='text-center'>Buscador</h2>
 				<div class='col-md-12'>
-					<label for='codigo_cliente'>Codigo de Cliente:</label>
-					<input type='int' placeholder='Ingrese el codigo' name='codigo_cliente' class='form-control'>
-				</div>
-				<div class='col-md-12'>
 					<label for='nombre'>Nombre:</label>
 					<input type='Text' placeholder='nombre' name='nombre' class='form-control'>
 				</div>

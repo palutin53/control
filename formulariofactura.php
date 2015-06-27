@@ -1,5 +1,35 @@
 <?php
 //include CSS Style Sheet
+
+session_start();
+
+$usuario = $_SESSION['usuario'];
+$contrasena = $_SESSION['contrasena'];
+/*
+$fecha = time();
+$fecha2 = date("d/m/Y",$fecha);
+*/
+
+$conexion = mysql_connect("localhost","root","");
+if(!$conexion){
+	die ("ERROR: ".mysql_error());
+} 
+mysql_select_db("controlcable",$conexion);
+//--------------------
+
+$codigo = $_GET['codigo'];
+$nombre = $_GET['nombre'];
+$sector = $_GET['sector'];
+$direccion = $_GET['direccion'];
+$comentario = $_GET['comentario'];
+$nit = $_POST['nit'];
+
+$consulta = mysql_query("SELECT * FROM clientes WHERE codigo LIKE '%".$codigo."%' OR nombre LIKE '%".$nombre."%' 
+	OR  sector LIKE '%$sector%' ORDER BY sector",$conexion);
+		
+while ($fila = mysql_fetch_array($consulta))
+{
+
    echo "<link rel='stylesheet' type='text/css' href='style.css' />";
 echo "
 <html>
@@ -16,27 +46,27 @@ echo "
 	<body onload='nobackbutton();'>
 		<div class='container'>
 			<div class='row'>
-				<form action='crearcliente.php' method='POST' class='col-md-6 col-md-offset-3 table-bordered top-buffer'>
+				<form action='ingresarpago.php' method='POST' class='col-md-6 col-md-offset-3 table-bordered top-buffer'>
 			<h1 class='text-center'>Ingrese los datos de la Factura</h1>
 				<div class='col-md-6'>
 					<label for='codigo_cliente'>Codigo de Cliente:</label>
-					<input type='int' placeholder='Ingrese el codigo(Opcional)' name='codigo_cliente' class='form-control'>
+					<input type='int' placeholder='Ingrese el codigo' name='codigo' class='form-control'>
 				</div>
 				<div class='col-md-6'>
 					<label for='numeronit'>Numero de Nit:</label>
-					<input type='text' placeholder='Ingrese Nit' name='numeronit' class='form-control'>
+					<input type='text' placeholder='Ingrese Nit' name='nit' class='form-control'>
 				</div>
 				<div class='col-md-6'> 
 					<label for='date'>Fecha:</label>
-					<input type='date'class='form-control'>
+					<input type='date'class='form-control' name='fecha'>
 				</div>
 				<div class='col-md-6 '>
-					<label for='numero'>Numero de recibo:</label>
-					<input type='int' placeholder='' name='numero' class='form-control' disabled='disabled'>
+					<label for='numero'>Correlativo:</label>
+					<input type='int' placeholder='Numero de Documento' name='correlativo' class='form-control' value='F'>
 				</div>
 				<div class='col-md-6'>
-					<label for='ultimo_mes'>Mes:</label>
-					<Select placeholder='ultimo_mes' name='ultimo_mes' class='form-control'>
+					<label for='Mes'>Mes:</label>
+					<Select placeholder='ultimo_mes' name='mes' class='form-control'>
 						<option  value='seleccione'>seleccione</option>
 						<option  value='Enero'>Enero</option>
 						<option  value='Febrero'>Febrero</option>
@@ -77,7 +107,7 @@ echo "
 				</div>
 				<div class='col-md-12'>
 					<label for='comentario'>Comentario:</label>
-					<input type='Text' placeholder='comentario' name='comentario' class='form-control'>
+					<input type='Text' placeholder='Comentarios' name='comentario' class='form-control'>
 				</div>
 				<div class='col-md-6 top-buffer bottom-buffer'>
 					<input type='reset' class='btn btn-primary'>
@@ -92,4 +122,5 @@ echo "
 	</body>
 <html>
 ";
+}
 ?>

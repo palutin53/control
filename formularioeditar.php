@@ -3,17 +3,27 @@ session_start();
 
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
-include "conexioncable.php";
+
+/*
+$fecha = time();
+$fecha2 = date("d/m/Y",$fecha);
+*/
+
+$conexion = mysql_connect("localhost","root","");
+if(!$conexion){
+	die ("ERROR: ".mysql_error());
+} 
+mysql_select_db("controlcable",$conexion);
 
 $codigo = $_GET['codigo'];
 $nombre = $_GET['nombre'];
+$_SESSION['nombre'] = $nombre;
 $sector = $_GET['sector'];
 $direccion = $_GET['direccion'];
-$ultima_fac = $_GET['ultima_fac'];
-$ultimo_mes = $_GET['ultimo_mes'];
 $comentario = $_GET['comentario'];
+$nit = $_GET['nit'];
 
-$consulta = mysql_query("SELECT * FROM clientes WHERE codigo LIKE '%".$codigo."%' OR nombre LIKE '%".$nombre."%' 
+$consulta = mysql_query("SELECT * FROM clientes WHERE codigo = '".$codigo."' AND nombre LIKE '%".$nombre."%' 
 	OR  sector LIKE '%$sector%' ORDER BY sector",$conexion);
 
 
@@ -21,63 +31,78 @@ $consulta = mysql_query("SELECT * FROM clientes WHERE codigo LIKE '%".$codigo."%
 while ($fila = mysql_fetch_array($consulta))
 {
 
+ echo "<link rel='stylesheet' type='text/css' href='style.css' />";
 echo "
-<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-<form action='scripteditar.php' method='POST'>
-	<table  width=40%>
-		
-			<tr><td>Codigo</td><td> <input type='text' name='codigo' value='".$fila['codigo']."'>  </td></tr>
-			<tr><td>Nombre</td><td>  <input type='text' name='nombre' value='".$fila['nombre']."'> </td</tr>
-			<tr><td>Sector</td><td>  
-					<Select placeholder='sector' name='sector' value='sector' id='sector'>
-		<option selected='".$fila['sector']."' value='".$fila['sector']."'>".$fila['sector']."</option>
-			<option  value='Barberos'>Barberos</option>
-			<option  value='Encinos'>Encinos</option>
-			<option  value='Venezuela'>Venezuela</option>
-			<option  value='Mercado'>Mercado</option>
-			<option  value='Guajitos'>Guajitos</option>
-			<option  value='Justo_Rufino_Barrios'>Justo Rufino Barrios</option>
-			<option  value='Covi-Hode'>Covi-Hode</option>
-			<option  value='San_Rafael'>San Rafael</option>
-			<option  value='Escuela'>Escuela</option>
-			 </td</tr>
-			<tr><td>Direccion</td><td>  <input type='text' name='direccion' value='".$fila['direccion']."'> </td</tr>
-			<tr><td>Ultima Factura</td><td>  <input type='text' name='ultima_fac' value='".$fila['ultima_fac']."'> </td</tr>
-			<tr><td>Ultimo Mes</td><td> 
-				<Select placeholder='ultimo_mes' name='ultimo_mes' value='ultimo_mes' id='ultimo_mes'>
-		<option selected='".$fila['ultimo_mes']."' value='".$fila['ultimo_mes']."'>".$fila['ultimo_mes']."</option>
-			<option  value='Enero'>Enero</option>
-			<option  value='Febrero'>Febrero</option>
-			<option  value='Marzo'>Marzo</option>
-			<option  value='Abril'>Abril</option>
-			<option  value='Mayo'>Mayo</option>
-			<option  value='Junio'>Junio</option>
-			<option  value='Julio'>Julio</option>
-			<option  value='Agosto'>Agosto</option>
-			<option  value='Septiembre'>Septiembre</option>
-			<option  value='Octubre'>Octubre</option>
-			<option  value='Noviembre'>Noviembre</option>
-			<option  value='Diciembre'>Diciembre</option>
-			 </td</tr><tr>
-			 <td>Año: </td><td>
-			 <Select placeholder='anio' name='anio' value='anio' id='anio'>
-		<option selected='".$fila['anio']."' value='".$fila['anio']."'>".$fila['anio']."</option>
-			<option  value='2014'>2014</option>
-			<option  value='2015'>2015</option>
-			<option  value='2016'>2016</option>
-			<option  value='2017'>2017</option>
-			<option  value='2018'>2018</option>
-			<option  value='2019'>2019</option>
-			<option  value='2020'>2020</option>
-			</td></tr>
-			<tr><td>Comentario</td><td>  <input type='text' name='comentario' value='".$fila['comentario']."'> </td</tr>
-			<tr><td colspan=2><input type='submit' name='actualizar' value='actualizar'></td></tr>
-			</table></form>";
+<html>
+		<head>
+		<tittle class='titulopagina'>Actualizar Cliente</tittle>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<link rel='stylesheet' type='text/css' href='css/bootstrap.css' />
+		<link rel='stylesheet' type='text/css' href='css/style.css' />
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+		<script src='js/bootstrap.js'></script>
+		<script src='js/jquery-1.11.3.min.js'></script>
+		<script src='js/custom.js'></script>
+		</head>
+	<body onload='nobackbutton();'>
+		<div class='container'>
+			<div class='row'>
+				<form action='scripteditar.php' method='POST' class='col-md-6 col-md-offset-3 table-bordered top-buffer'>
+			<h1 class='text-center'>Datos del Nuevo Cliente</h1>
+				<div class='col-md-12'>
+					<label for='codigo'>Codigo de Cliente:</label>
+					<input type='int' placeholder='Asignado automaticamente' name='codigo' class='form-control' 
+					value='".$codigo."' disabled='disabled'>
+				</div>
+				<div class='col-md-6'> 
+					<label for='date'>Fecha:</label>
+					<input type='date'class='form-control'>
+				</div>
+				<div class='col-md-6'> 
+					<label for='sector'>Sector:</label>
+						<select  name ='sector' class='form-control'>
+						<option selected='".$fila['sector']."' value='".$fila['sector']."'>".$fila['sector']."</option>
+							<option  value='seleccione'>seleccione</option>
+							<option  value='Barberos'>Barberos</option>
+							<option  value='Encinos'>Encinos</option>
+							<option  value='Venezuela'>Venezuela</option>
+							<option  value='Mercado'>Mercado</option>
+							<option  value='Guajitos'>Guajitos</option>
+							<option  value='Justo Rufino Barrios'>Justo Rufino Barrios</option>
+							<option  value='Covi-Hode'>Covi-Hode</option>
+							<option  value='San Rafael'>San Rafael</option>
+							<option  value='Escuela'>Escuela</option>
+						</select>
+				</div>
+				<div class='col-md-12'>
+					<label for='nombre'>Nombre:</label>
+					<input type='Text' placeholder='nombre' name='nombre' class='form-control' value='".$nombre."'>
+				</div>
+				<div class='col-md-12'>
+					<label for='direccion'>Direccion:</label>
+					<input type='Text' placeholder='direccion' name='direccion' class='form-control' value='".$direccion."'>
+				</div>
+				<div class='col-md-12'>
+					<label for='comentario'>Comentario:</label>
+					<input type='Text' placeholder='comentario' name='comentario' class='form-control' value='".$comentario."'>
+				</div>
+				<div class='col-md-12'>
+					<label for='nit'>NIT:</label>
+					<input type='Text' placeholder='xxxxxxx-x' name='nit' class='form-control' value='".$nit."'>
+				</div>
+				<div class='col-md-12 top-buffer bottom-buffer'>
+					<input type='reset' class='btn btn-primary'>
+					<a class='btn btn-primary' href='adminclientes.php' role='button'>Regresar</a>
+					<input type='submit' class='btn btn-primary' ></input>
+				</div>
+				
+			</form>
+			</div>
+		</div>
+	</body>
+<html>
+";
 }
-
-
-$_SESSION['codigo'] = $codigo;
-
 
 
 mysql_close($conexion);

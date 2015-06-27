@@ -1,24 +1,28 @@
 <?php
+
+$conexion = mysql_connect("localhost","root","");
+if (!$conexion){
+	die ("no he podido conectar: ". mysql_error());
+} 
+mysql_select_db("controlcable");
+
 session_start();
 
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
 
-include "conexioncable.php";
 
-$codigo = $_POST['codigo'];
 $nombre = $_POST['nombre'];
 $sector = $_POST['sector'];
 $direccion = $_POST['direccion'];
-$ultima_fac = $_POST['ultima_fac'];
-$ultimo_mes = $_POST['ultimo_mes'];
 $comentario = $_POST['comentario'];
+$nit = $_POST['nit'];
 
-$codigoantiguo = $_SESSION['codigo'];
+$nombreantiguo = $_SESSION['nombre'];
 
 
-$consulta = "UPDATE clientes SET codigo='".$codigo."', nombre='".$nombre."', sector='".$sector."', direccion='".$direccion."', ultima_fac='".$ultima_fac."',
- ultimo_mes='".$ultimo_mes."', comentario='".$comentario."' WHERE codigo='".$codigoantiguo."' ";
+$consulta = "UPDATE clientes SET nombre='".$nombre."', sector='".$sector."', direccion='".$direccion."', 
+comentario='".$comentario."', comentario='".$comentario."' WHERE nombre = '".$nombreantiguo."' ";
 
 if(!mysql_query($consulta,$conexion)){
 	die ("ERROR: ".mysql_error()); 

@@ -1,5 +1,12 @@
 <?php
 session_start();
+<<<<<<< HEAD
+=======
+
+$_SESSION['usuario'];
+$_SESSION['contrasena'];
+
+>>>>>>> origin/master
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
@@ -17,6 +24,7 @@ echo "
 		<script src='js/bootstrap.js'></script>
 		<script src='js/jquery-1.11.3.min.js'></script>
 		<script src='js/custom.js'></script>
+<<<<<<< HEAD
 	</head>
 	<body onload='nobackbutton();'>
 		<div class='container'>
@@ -44,6 +52,39 @@ echo "
 	</body>
 
 ";
+=======
+		</head>
+		<body onload='nobackbutton();'>
+		<form action='buscarsector.php' method='POST'>
+		<table width=30%>
+		<tr><td>Busqueda por sector:</td><td>
+		<Select placeholder='sector' name='sector' value='sector' id='sector' class='form-control'>
+		<option selected='selected' value=0 >Selecciona sector</option>
+			<option  value='Barberos'>Barberos</option>
+			<option  value='Encinos'>Encinos</option>
+			<option  value='Venezuela'>Venezuela</option>
+			<option  value='Mercado'>Mercado</option>
+			<option  value='Guajitos'>Guajitos</option>
+			<option  value='Justo_Rufino_Barrios'>Justo Rufino Barrios</option>
+			<option  value='Covi-Hode'>Covi-Hode</option>
+			<option  value='San_Rafael'>San Rafael</option>
+			<option  value='Escuela'>Escuela</option>
+		</td>
+		<td><input type='submit' name='buscar' id='buscar' name='buscar' class='btn btn-primary'></td>
+		</table></form>
+";
+
+echo "<table width=100%>
+<td>
+				<form action='opcionescable.php' method='POST'>
+					<center><button type='submit' name='regresar' id='regresar'class='btn btn-primary top-buffer'>Regresar</button></center>
+				</form>
+			</td></tr>
+			";
+echo "</table>";
+
+
+>>>>>>> origin/master
 
 mysql_close($conexion);
 
