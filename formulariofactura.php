@@ -1,35 +1,32 @@
 <?php
 //include CSS Style Sheet
-
 session_start();
-
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
 /*
 $fecha = time();
 $fecha2 = date("d/m/Y",$fecha);
 */
-
 $conexion = mysql_connect("localhost","root","");
 if(!$conexion){
 	die ("ERROR: ".mysql_error());
 } 
 mysql_select_db("controlcable",$conexion);
 //--------------------
-
 $codigo = $_GET['codigo'];
 $nombre = $_GET['nombre'];
 $sector = $_GET['sector'];
 $direccion = $_GET['direccion'];
 $comentario = $_GET['comentario'];
-$nit = $_POST['nit'];
+$nit = $_GET['nit'];
+$_SESSION['codigo'] = $codigo;
+$_SESSION['nit'] = $nit;
 
-$consulta = mysql_query("SELECT * FROM clientes WHERE codigo LIKE '%".$codigo."%' OR nombre LIKE '%".$nombre."%' 
-	OR  sector LIKE '%$sector%' ORDER BY sector",$conexion);
+$consulta = mysql_query("SELECT * FROM clientes WHERE codigo = '".$codigo."' AND nombre = '".$nombre."' 
+	AND  sector = '".$sector."' ORDER BY sector",$conexion);
 		
 while ($fila = mysql_fetch_array($consulta))
 {
-
    echo "<link rel='stylesheet' type='text/css' href='style.css' />";
 echo "
 <html>
@@ -46,19 +43,19 @@ echo "
 	<body onload='nobackbutton();'>
 		<div class='container'>
 			<div class='row'>
-				<form action='ingresarpago.php' method='POST' class='col-md-6 col-md-offset-3 table-bordered top-buffer'>
+				<form action='ingresarfactura.php' method='POST' class='col-md-6 col-md-offset-3 table-bordered top-buffer'>
 			<h1 class='text-center'>Ingrese los datos de la Factura</h1>
 				<div class='col-md-6'>
 					<label for='codigo_cliente'>Codigo de Cliente:</label>
-					<input type='int' placeholder='Ingrese el codigo' name='codigo' class='form-control'>
+					<input type='int' placeholder='Ingrese el codigo' name='codigo' class='form-control' value='".$codigo."' disabled='disabled'>
 				</div>
 				<div class='col-md-6'>
 					<label for='numeronit'>Numero de Nit:</label>
-					<input type='text' placeholder='Ingrese Nit' name='nit' class='form-control'>
+					<input type='text' placeholder='Ingrese NIT' name='nit' class='form-control' value='".$nit."' disabled='disabled'>
 				</div>
 				<div class='col-md-6'> 
 					<label for='date'>Fecha:</label>
-					<input type='date'class='form-control' name='fecha'>
+					<input type='date' class='form-control' name='fecha_pago'>
 				</div>
 				<div class='col-md-6 '>
 					<label for='numero'>Correlativo:</label>
@@ -84,7 +81,9 @@ echo "
 				</div>
 				<div class='col-md-6'> 
 					<label for='sector'>Sector:</label>
-						<select  name ='sector' class='form-control'>
+						<select  name ='sector' class='form-control' disabled='disabled'>
+						<option selected='".$sector."' value='".$sector."'>".$sector."</option>
+
 							<option  value='seleccione'>seleccione</option>
 							<option  value='Barberos'>Barberos</option>
 							<option  value='Encinos'>Encinos</option>
@@ -99,19 +98,23 @@ echo "
 				</div>
 				<div class='col-md-12'>
 					<label for='nombre'>Nombre:</label>
-					<input type='Text' placeholder='nombre' name='nombre' class='form-control'>
+					<input type='Text' placeholder='nombre' name='nombre' class='form-control' value='".$nombre."' disabled='disabled'>
 				</div>
 				<div class='col-md-12'>
 					<label for='direccion'>Direccion:</label>
-					<input type='Text' placeholder='direccion' name='direccion' class='form-control'>
+					<input type='Text' placeholder='direccion' name='direccion' class='form-control' value='".$direccion."' disabled='disabled'>
+				</div>
+				<div class='col-md-12'>
+					<label for='comentario'>cantidad:</label>
+					<input type='Text' placeholder='cantidad' name='cantidad' class='form-control'>
 				</div>
 				<div class='col-md-12'>
 					<label for='comentario'>Comentario:</label>
-					<input type='Text' placeholder='Comentarios' name='comentario' class='form-control'>
+					<input type='Text' placeholder='Comentarios' name='comentario' class='form-control'  value='".$comentario."' >
 				</div>
 				<div class='col-md-6 top-buffer bottom-buffer'>
 					<input type='reset' class='btn btn-primary'>
-					<a class='btn btn-primary' href='pagos.php' role='button'>Regresar</a>
+					<a class='btn btn-primary' href='buscadorfactura.php' role='button'>Regresar</a>
 				</div>
 				<div class='col-md-6 top-buffer bottom-buffer'>
 					<input type='submit' class='btn btn-primary'>
@@ -123,4 +126,5 @@ echo "
 <html>
 ";
 }
+mysql_close($conexion);
 ?>

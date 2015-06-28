@@ -1,20 +1,14 @@
 <?php
 session_start();
-
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
-
-
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
 } 
 mysql_select_db("controlcable");
-
 $nombre = $_GET['nombre'];
 $sector = $_GET['sector'];
-
-
 		echo "	<html>
 	<head>
 		<tittle class='titulopagina'>Telesat</tittle>
@@ -29,9 +23,8 @@ $sector = $_GET['sector'];
 <body onload='nobackbutton();'>
 <div class='container'>
 <div class='row'>";
-		echo "Resultados para: '".$nombre."' ' ".$sector."'";
-	$consulta = mysql_query("SELECT * FROM clientes WHERE nombre LIKE '%".$nombre."%' OR  sector LIKE '%$sector%' ORDER BY sector",$conexion);
-
+		echo "Resultados para: '".$nombre."' '".$sector."'";
+	$consulta = mysql_query("SELECT * FROM clientes WHERE nombre = '".$nombre."' AND  sector = '".$sector."' ORDER BY sector",$conexion);
 	echo "
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 	<table border=1 width=100%>
@@ -40,32 +33,27 @@ $sector = $_GET['sector'];
 			<td>Nombre</td>
 			<td>Sector</td>
 			<td>Direccion</td>
-			<td>Ultima Factura</td>
-			<td>Ultimo Mes</td>
-			<td>Año</td>
 			<td>Comentario</td>
+			<td>NIT</td>
 			<td></td>
 		</tr>	
 ";
-
 while ($fila = mysql_fetch_array($consulta))
  {
 	echo "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 	<tr><td>".$fila['codigo']."</td><td>".$fila['nombre']."</td><td>".$fila['sector']."</td><td>".$fila['direccion']."</td>
-	<td>".$fila['ultima_fac']."	</td><td>".$fila['ultimo_mes']."</td><td>".$fila['anio']."</td><td>".$fila['comentario']."</td><td>
-	<a href='formulariofactura.php?codigo=".$fila['codigo']."&nombre=".$fila['nombre']."&sector=".$fila['sector']."&direccion=".$fila['direccion']."
-	&ultima_fac=".$fila['ultima_fac']."&ultimo_mes=".$fila['ultimo_mes']."&comentario=".$fila['comentario']."'>Realizar Pago</a></td>
+	<td>".$fila['comentario']."</td><td>".$fila['nit']."</td><td>
+	<a href='formulariorecibo.php?codigo=".$fila['codigo']."&nombre=".$fila['nombre']."&sector=".$fila['sector']."&direccion=".$fila['direccion']."
+	&comentario=".$fila['comentario']."&nit=".$fila['nit']."'>Realizar Pago</a></td>
 	</tr>";
 }
-
 	echo "</table><div class='form-inline col-md-10'>
 			<div class='form-inline col-md-10 col-md-offset-3 top-buffer'>
 					<div class='form-group'>
-						<a class='btn btn-primary' href='buscadorrecibo.php' role='button'>Regresar</a>
+						<a class='btn btn-primary' href='buscadorfactura.php' role='button'>Regresar</a>
 					</div>
 			</div>	
 		</div>";
-
 	$totalrows=mysql_num_rows($consulta);
 if (empty($totalrows))
  {
@@ -79,10 +67,7 @@ if (empty($totalrows))
 		</div>
 	</div>
 </body>
-
 	";
   }
-
 mysql_close($conexion);
-
 ?>

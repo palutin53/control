@@ -1,16 +1,13 @@
 <?php
 session_start();
-
 $_SESSION['usuario'];
 $_SESSION['contrasena'];
-
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
 } 
 mysql_select_db("controlcable", $conexion);
 $consulta = mysql_query("SELECT * FROM clientes;");
-
 echo "
 	<head>
 		<tittle></tittle>
@@ -41,7 +38,6 @@ echo "
 		<td><input type='submit' name='buscar' id='buscar' name='buscar' class='btn btn-primary'></td>
 		</table></form>
 ";
-
 echo "<table width=100%>
 <td>
 				<form action='opcionescable.php' method='POST'>
@@ -50,9 +46,5 @@ echo "<table width=100%>
 			</td></tr>
 			";
 echo "</table>";
-
-
-
 mysql_close($conexion);
-
 ?>

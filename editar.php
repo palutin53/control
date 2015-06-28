@@ -1,20 +1,14 @@
 <?php
 session_start();
-
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
-
-
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
 } 
 mysql_select_db("controlcable");
-
 $nombre = $_GET['nombre'];
 $sector = $_GET['sector'];
-
-
 		echo "	<html>
 	<head>
 		<tittle class='titulopagina'>Telesat</tittle>
@@ -31,7 +25,6 @@ $sector = $_GET['sector'];
 <div class='row'>";
 		echo "Resultados para: '".$nombre."' ' ".$sector."'";
 	$consulta = mysql_query("SELECT * FROM clientes WHERE nombre = '".$nombre."' AND  sector LIKE '%$sector%' ORDER BY sector",$conexion);
-
 	echo "
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 	<table border=1 width=100%>
@@ -45,7 +38,6 @@ $sector = $_GET['sector'];
 			<td></td>
 		</tr>	
 ";
-
 while ($fila = mysql_fetch_array($consulta))
  {
 	echo "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
@@ -55,7 +47,6 @@ while ($fila = mysql_fetch_array($consulta))
 	&comentario=".$fila['comentario']."&nit=".$fila['nit']."'>Actualizar</a></td>
 	</tr>";
 }
-
 	echo "</table><div class='form-inline col-md-10'>
 			<div class='form-inline col-md-10 col-md-offset-3 top-buffer'>
 					<div class='form-group'>
@@ -63,7 +54,6 @@ while ($fila = mysql_fetch_array($consulta))
 					</div>
 			</div>	
 		</div>";
-
 	$totalrows=mysql_num_rows($consulta);
 if (empty($totalrows))
  {
@@ -76,10 +66,7 @@ if (empty($totalrows))
 		</div>
 	</div>
 </body>
-
 	";
   }
-
 mysql_close($conexion);
-
 ?>

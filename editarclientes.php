@@ -2,11 +2,8 @@
 //include CSS Style Sheet
    echo "<link rel='stylesheet' type='text/css' href='style.css' />";
 session_start();
-
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
-
-
 echo  "
 		<head>
 		<tittle></tittle>

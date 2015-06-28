@@ -1,13 +1,9 @@
-
 <?php
 //include CSS Style Sheet
    echo "<link rel='stylesheet' type='text/css' href='style.css' />";
 session_start();
-
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
-
-
 echo  "
 <head>
 		<tittle></tittle>
@@ -25,10 +21,6 @@ echo  "
 			<form action='eliminar.php' method='GET' class='col-md-6 col-md-offset-3 table-bordered top-buffer'>
 			<h1 class='text-center'>Eliminar Cliente</h1>
 			<h2 class='text-center'>Buscador</h2>
-				<div class='col-md-12'>
-					<label for='codigo_cliente'>Codigo de Cliente:</label>
-					<input type='int' placeholder='Ingrese el codigo' name='codigo_cliente' class='form-control'>
-				</div>
 				<div class='col-md-12'>
 					<label for='nombre'>Nombre:</label>
 					<input type='Text' placeholder='nombre' name='nombre' class='form-control'>

@@ -1,10 +1,7 @@
 <?php
-
 session_start();
-
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
-
 echo "
 <html>
 	<head>
@@ -35,9 +32,6 @@ echo "
 			</div>
 		</div>
 	</body>
-
 </html>
 ";
-
-
 ?>

@@ -36,10 +36,6 @@ echo "
 	</table>
 	</center>
 	</body>
-
 </html>
 ";
-
-
-
 ?>

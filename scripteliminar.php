@@ -1,18 +1,19 @@
 <?php
-
-include "conexioncable.php";
-
+session_start();
+$usuario = $_SESSION['usuario'];
+$contrasena = $_SESSION['contrasena'];
+$conexion = mysql_connect("localhost","root","");
+if (!$conexion){
+	die ("no he podido conectar: ". mysql_error());
+} 
+mysql_select_db("controlcable");
 $codigo = $_GET['codigo'];
 $nombre = $_GET['nombre'];
 $sector = $_GET['sector'];
 $direccion = $_GET['direccion'];
-$ultima_fac = $_GET['ultima_fac'];
-$ultimo_mes = $_GET['ultimo_mes'];
 $comentario = $_GET['comentario'];
-
-
-$consulta = "DELETE FROM clientes WHERE codigo='".$codigo."' AND nombre='".$nombre."' AND sector='".$sector."' AND 
-direccion='".$direccion."' AND ultima_fac='".$ultima_fac."' AND ultimo_mes='".$ultimo_mes."' AND comentario='".$comentario."'";
+$consulta = "DELETE FROM clientes WHERE codigo='".$codigo."' AND nombre='".$nombre."' AND sector='".$sector."'
+ AND direccion='".$direccion."' AND comentario='".$comentario."'";
 
 if(!mysql_query($consulta,$conexion)){
 	die ("ERROR: ".mysql_error()); 
@@ -25,9 +26,5 @@ if(!mysql_query($consulta,$conexion)){
 </html>
 ';
 }
-
-
-
 mysql_close($conexion);
-
 ?>

@@ -15,7 +15,7 @@ echo  "
 		<div class=container>
 		<div class=row >	
 			<form action='resultadorecibo.php' method='GET' class='col-md-4 col-md-offset-3'>
-			<h1>Consulta de Clientes</h1>
+			<h1>Buscar Cliente</h1>
 					<div class form-group>
 						<label for='nombre'>Nombre:</label>
 						<input type='text' name='nombre' placeholder='nombre' class='form-control'>
@@ -48,6 +48,4 @@ echo  "
 	</body>
 <html>
 	";
-
-
 ?>

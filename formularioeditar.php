@@ -1,20 +1,16 @@
 <?php
 session_start();
-
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
-
 /*
 $fecha = time();
 $fecha2 = date("d/m/Y",$fecha);
 */
-
 $conexion = mysql_connect("localhost","root","");
 if(!$conexion){
 	die ("ERROR: ".mysql_error());
 } 
 mysql_select_db("controlcable",$conexion);
-
 $codigo = $_GET['codigo'];
 $nombre = $_GET['nombre'];
 $_SESSION['nombre'] = $nombre;
@@ -22,15 +18,11 @@ $sector = $_GET['sector'];
 $direccion = $_GET['direccion'];
 $comentario = $_GET['comentario'];
 $nit = $_GET['nit'];
-
-$consulta = mysql_query("SELECT * FROM clientes WHERE codigo = '".$codigo."' AND nombre LIKE '%".$nombre."%' 
-	OR  sector LIKE '%$sector%' ORDER BY sector",$conexion);
-
-
+$consulta = mysql_query("SELECT * FROM clientes WHERE codigo = '".$codigo."' AND nombre = '".$nombre."' 
+	AND  sector = '".$sector."' ORDER BY sector",$conexion);
 		
 while ($fila = mysql_fetch_array($consulta))
 {
-
  echo "<link rel='stylesheet' type='text/css' href='style.css' />";
 echo "
 <html>
@@ -103,10 +95,5 @@ echo "
 <html>
 ";
 }
-
-
 mysql_close($conexion);
-
-
-
 ?>

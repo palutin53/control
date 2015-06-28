@@ -1,7 +1,5 @@
 <?php
-
 // ································CABLE····································································
-
 //·····························································TABLA DE CLIENTES················································································
 //conexion=================================================================================================================================
 echo "CABLE";
@@ -11,7 +9,6 @@ if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
 } 
 //base de datos==================================================================================================================================
-
 if(mysql_query("CREATE DATABASE controlcable", $conexion)){
 	echo "se ha creado la base de datos";
 	echo "<br />";
@@ -40,7 +37,6 @@ if(!mysql_query($clientes,$conexion)){
 }
 ///cerrar conexion=================================================================================================================================
 mysql_close($conexion);
-
 //····································································TABLA DE PAGOS ·········································································
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
@@ -53,14 +49,11 @@ $pagos = "CREATE TABLE pagos(
 	PRIMARY KEY(confirmacionpago),
 	codigo int NOT NULL,
 	FOREIGN KEY(codigo) REFERENCES clientes(codigo),
-	nombre char(25) NOT NULL,
-	direccion char(80) NOT NULL,
-	sector char(25) NOT NULL,
 	fecha_pago char(90) NOT NULL,
 	mes_pago char(15) NOT NULL,
-	numero char(30) NOT NULL,
-	NIT int NOT NULL,
-	comentario char(120) NOT  NULL,
+	correlativo char(30) NOT NULL,
+	cantidad int,
+	comentario char(30),
 	usuario char(25) NOT NULL
 )AUTO_INCREMENT = 53000";
 if(!mysql_query($pagos,$conexion)){
@@ -94,7 +87,6 @@ if(!mysql_query($usuarios,$conexion)){
 	echo "<br />";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
@@ -111,7 +103,6 @@ echo "<br />";
 	echo "<br />";
 }
 mysql_close($conexion);
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //···································································TABLA DE LOGS··········································································
 //conexion=================================================================================================================================
@@ -155,7 +146,6 @@ if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
 } 
 //base de datos==================================================================================================================================
-
 if(mysql_query("CREATE DATABASE controlinternet", $conexion)){
 	echo "se ha creado la base de datos";
 	echo "<br />";
@@ -201,8 +191,9 @@ $pagos = "CREATE TABLE pagos(
 	sector char(25) NOT NULL,
 	fecha_pago char(90) NOT NULL,
 	mes_pago char(15) NOT NULL,
-	numero char(30) NOT NULL,
+	correlativo char(30) NOT NULL,
 	NIT int,
+	cantidad int,
 	comentario char(120) NOT  NULL,
 	usuario char(25) NOT NULL
 )AUTO_INCREMENT = 18000";
@@ -237,7 +228,6 @@ if(!mysql_query($usuarios,$conexion)){
 	echo "<br />";
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
@@ -254,7 +244,6 @@ echo "<br />";
 	echo "<br />";
 }
 mysql_close($conexion);
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //TABLA DE LOGS·············································································································································
 //conexion=================================================================================================================================

@@ -1,9 +1,6 @@
 <?php
-
 session_start();
-
 $contador = 0;
-
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
 //····························································································································
@@ -13,26 +10,18 @@ $adddireccion = $_POST['direccion'];
 $sector = $_POST['sector'];
 $addcomentario = $_POST['comentario'];
 $addnit = $_POST['nit'];
-
 // comprobar si el usuario existe en la bd
-
 $conexion = mysql_connect("localhost","root","");
 if(!$conexion){
 	die ("ERROR: ".mysql_error());
 } 
-
 mysql_select_db("controlcable",$conexion);
-
-
 $consulta = mysql_query("SELECT * FROM clientes",$conexion);
-
 while ($fila = mysql_fetch_array($consulta)){
 	if($fila['nombre'] == $addnombre & $fila['direccion'] == $adddireccion){
 			$contador++;
 	} else {}
 }
-
-
 echo "
 <html>
 	<head>
@@ -46,9 +35,7 @@ echo "
 		<script src='js/custom.js'></script>
 		</head>
 	<body onload='nobackbutton();'>
-
 ";
-
 if( $contador == 0 ){
 if(!mysql_query("INSERT INTO clientes(codigo,nombre,sector,direccion,comentario,nit,usuario)
 	VALUES('','$addnombre','$addsector','$adddireccion','$addcomentario','$addnit','$usuario')")){
@@ -66,7 +53,6 @@ if(!mysql_query("INSERT INTO clientes(codigo,nombre,sector,direccion,comentario,
 ".mysql_error());
 }
 	else{
-
 echo "
 	se ha creado el usuario <br><br>
 	<div class='container'>
@@ -81,8 +67,6 @@ echo "
 	</div>
 ";
 }
-
-
 }
 else{
 	echo "Este Cliente ya existe";
@@ -101,7 +85,6 @@ else{
 }
 echo "
 </body>
-
 ";
 mysql_close($conexion);
 ?>

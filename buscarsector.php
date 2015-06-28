@@ -1,18 +1,13 @@
 <?php
 session_start();
-
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
-
-
 $conexion = mysql_connect("localhost","root","");
 if (!$conexion){
 	die ("no he podido conectar: ". mysql_error());
 } 
 mysql_select_db("controlcable");
-
 $sector = $_POST['sector'];
-
 		echo "	
 		<head>
 		<tittle></tittle>
@@ -29,9 +24,15 @@ $sector = $_POST['sector'];
 		
 		";
 		echo "<h1 class='text-center'>Resultados para: '".$sector."'</h1>";
-		
-		$consulta = mysql_query("SELECT clientes.*, pagos.* FROM clientes,pagos WHERE sector = '".$sector."' ORDER BY codigo",$conexion);
+	/*	
+		$consulta = mysql_query("SELECT clientes.*, pagos.* 
+			FROM clientes,pagos WHERE sector = '".$sector."' 
+			ORDER BY codigo",$conexion);
+*/
 
+		$consulta = mysql_query("SELECT c.*, p.* FROM clientes c 
+			INNER JOIN pagos p ON c.codigo = p.codigo
+			WHERE c.sector='".$sector."' ORDER BY sector",$conexion);
 
 		echo "<div id='dvData'>
 			<table class=' col-md-12 table-condensed  bordeimpreso'>
@@ -81,7 +82,5 @@ $sector = $_POST['sector'];
 		</body>
 		";
 		}
-
 mysql_close($conexion);
-
 ?>

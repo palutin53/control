@@ -1,39 +1,34 @@
 <?php
-
 session_start();
-
 $usuario = $_SESSION['usuario'];
 $contrasena = $_SESSION['contrasena'];
 /*
 $fecha = time();
 $fecha2 = date("d/m/Y",$fecha);
 */
-
 $conexion = mysql_connect("localhost","root","");
 if(!$conexion){
 	die ("ERROR: ".mysql_error());
 } 
 mysql_select_db("controlcable",$conexion);
-//--------------------
-
 $codigo = $_GET['codigo'];
 $nombre = $_GET['nombre'];
 $sector = $_GET['sector'];
 $direccion = $_GET['direccion'];
 $comentario = $_GET['comentario'];
+$nit = $_GET['nit'];
+$_SESSION['codigo'] = $codigo;
 
-$consulta = mysql_query("SELECT * FROM clientes WHERE codigo LIKE '%".$codigo."%' OR nombre LIKE '%".$nombre."%' 
-	OR  sector LIKE '%$sector%' ORDER BY sector",$conexion);
-
-
+$consulta = mysql_query("SELECT * FROM clientes WHERE codigo = '".$codigo."' AND nombre = '".$nombre."' 
+	AND  sector = '".$sector."' ORDER BY sector",$conexion);
 		
 while ($fila = mysql_fetch_array($consulta))
 {
-
+   echo "<link rel='stylesheet' type='text/css' href='style.css' />";
 echo "
 <html>
 		<head>
-		<tittle></tittle>
+		<tittle class='titulopagina'>Ingreso Facturas</tittle>
 		<meta name='viewport' content='width=device-width, initial-scale=1'>
 		<link rel='stylesheet' type='text/css' href='css/bootstrap.css' />
 		<link rel='stylesheet' type='text/css' href='css/style.css' />
@@ -44,25 +39,24 @@ echo "
 		</head>
 	<body onload='nobackbutton();'>
 		<div class='container'>
-		<div class='row'>
-			<form action='ingresarrecibo.php' method='POST' class='col-md-6 col-md-offset-3 table-bordered top-buffer'>
-			<h1 class='text-center'>Ingrese los datos del recibo</h1>
-				<div class='col-md-12'>
+			<div class='row'>
+				<form action='ingresarrecibo.php' method='POST' class='col-md-6 col-md-offset-3 table-bordered top-buffer'>
+			<h1 class='text-center'>Ingrese los datos de la Recibo</h1>
+				<div class='col-md-6'>
 					<label for='codigo_cliente'>Codigo de Cliente:</label>
-					<input type='int' placeholder='Codigo' name='codigo_cliente' class='form-control' 
-					disabled='disabled' value='".$codigo."'>
+					<input type='text' placeholder='Ingrese el codigo' name='codigo' class='form-control' value='".$codigo."' disabled='disabled'>
 				</div>
 				<div class='col-md-6'> 
 					<label for='date'>Fecha:</label>
-					<input type='date'class='form-control' name='fecha_pago'>
+					<input type='date' class='form-control' name='fecha_pago'>
 				</div>
-				<div class='col-md-6'>
+				<div class='col-md-6 '>
 					<label for='numero'>Correlativo:</label>
-					<input type='int' placeholder='numero' name='correlativo' class='form-control' value='R'>
+					<input type='int' placeholder='Numero de Documento' name='correlativo' class='form-control' value='F'>
 				</div>
 				<div class='col-md-6'>
-					<label for='ultimo_mes'>Mes:</label>
-					<Select placeholder='ultimo_mes' name='ultimo_mes' class='form-control'>
+					<label for='Mes'>Mes:</label>
+					<Select placeholder='ultimo_mes' name='mes' class='form-control'>
 						<option  value='seleccione'>seleccione</option>
 						<option  value='Enero'>Enero</option>
 						<option  value='Febrero'>Febrero</option>
@@ -81,7 +75,8 @@ echo "
 				<div class='col-md-6'> 
 					<label for='sector'>Sector:</label>
 						<select  name ='sector' class='form-control' disabled='disabled'>
-							<option selected='".$fila['sector']."' value='".$fila['sector']."'>".$fila['sector']."</option>
+						<option selected='".$sector."' value='".$sector."'>".$sector."</option>
+
 							<option  value='seleccione'>seleccione</option>
 							<option  value='Barberos'>Barberos</option>
 							<option  value='Encinos'>Encinos</option>
@@ -103,21 +98,26 @@ echo "
 					<input type='Text' placeholder='direccion' name='direccion' class='form-control' value='".$direccion."' disabled='disabled'>
 				</div>
 				<div class='col-md-12'>
+					<label for='comentario'>cantidad:</label>
+					<input type='Text' placeholder='cantidad' name='cantidad' class='form-control'>
+				</div>
+				<div class='col-md-12'>
 					<label for='comentario'>Comentario:</label>
-					<input type='Text' placeholder='comentario' name='comentario' class='form-control'>
+					<input type='Text' placeholder='Comentarios' name='comentario' class='form-control'  value='".$comentario."' >
 				</div>
 				<div class='col-md-6 top-buffer bottom-buffer'>
 					<input type='reset' class='btn btn-primary'>
-					<a class='btn btn-primary' href='pagos.php' role='button'>Regresar</a>
+					<a class='btn btn-primary' href='buscadorrecibo.php' role='button'>Regresar</a>
 				</div>
 				<div class='col-md-6 top-buffer bottom-buffer'>
 					<input type='submit' class='btn btn-primary'>
 				</div>
-			</form>    
+			</form>
 			</div>
 		</div>
-	<body>
+	</body>
 <html>
 ";
 }
+mysql_close($conexion);
 ?>
