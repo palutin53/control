@@ -26,6 +26,7 @@ $clientes = "CREATE TABLE clientes(
 	direccion char(80) NOT NULL,
 	comentario char(200),
 	nit int NOT NULL,
+	fechacreacion date,
 	usuario char(25)
 )AUTO_INCREMENT = 10001";
 if(!mysql_query($clientes,$conexion)){

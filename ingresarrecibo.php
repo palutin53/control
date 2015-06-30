@@ -36,6 +36,7 @@ echo "
 		</head>
 	<body onload='nobackbutton();'>
 ";
+if($addcantidad  != 0 or $mes != 0){
 if( $contador == 0 ){
 if(!mysql_query("INSERT INTO pagos(codigo,fecha_pago,mes_pago,correlativo,cantidad,comentario,usuario)
 	VALUES('".$addcodigo."','$addfecha_pago','$addmes','$addcorrelativo','$addcantidad','$addcomentario','".$usuario."')")){
@@ -84,5 +85,20 @@ else{
 echo "
 </body>
 ";
+}
+else{
+	echo "Invalido, Intente de nuevo.";
+	echo "
+	 <div class='container'>
+		<div class='form-inline col-md-10'>
+			<div class='form-inline col-md-10 col-md-offset-3'>
+						<div class='form-group'>
+						<a class='btn btn-primary' href='buscadorrecibo.php' role='button'>Regresar</a>
+					</div>
+			</div>	
+		</div>
+	</div>
+";
+}
 mysql_close($conexion);
 ?>

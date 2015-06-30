@@ -10,6 +10,7 @@ $adddireccion = $_POST['direccion'];
 $sector = $_POST['sector'];
 $addcomentario = $_POST['comentario'];
 $addnit = $_POST['nit'];
+$addfecha = $_POST['fecha'];
 // comprobar si el usuario existe en la bd
 $conexion = mysql_connect("localhost","root","");
 if(!$conexion){
@@ -36,9 +37,10 @@ echo "
 		</head>
 	<body onload='nobackbutton();'>
 ";
+if($addnombre != 0 OR $addsector != 0 OR $addcomentario != 0 OR $adddireccion != 0 OR $addnit != 0){
 if( $contador == 0 ){
-if(!mysql_query("INSERT INTO clientes(codigo,nombre,sector,direccion,comentario,nit,usuario)
-	VALUES('','$addnombre','$addsector','$adddireccion','$addcomentario','$addnit','$usuario')")){
+if(!mysql_query("INSERT INTO clientes(codigo,nombre,sector,direccion,comentario,nit,fechacreacion,usuario)
+	VALUES('','$addnombre','$addsector','$adddireccion','$addcomentario','$addnit','$addfecha','$usuario')")){
 	die ("
 	ERROR: <br><br>
 	<div class='container'>
@@ -78,6 +80,23 @@ else{
 					<div class='form-group'>
 						<a class='btn btn-primary' href='adminclientes.php' role='button'>Regresar</a>
 					</div>
+			</div>	
+		</div>
+	</div>
+";
+}
+
+}
+else{
+	echo "Invalido, Intente de Nuevo";
+	echo "
+	 <div class='container'>
+		<div class='form-inline col-md-10'>
+		<div class='form-group'>
+						<a class='btn btn-primary' href='adminclientes.php' role='button'>Regresar</a>
+					</div>
+			<div class='form-inline col-md-10 col-md-offset-3'>
+				<h1 class='col-md-offset-2'>Invalido, Intente de Nuevo</h1>
 			</div>	
 		</div>
 	</div>

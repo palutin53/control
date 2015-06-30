@@ -14,7 +14,7 @@ $comentario = $_POST['comentario'];
 $nit = $_POST['nit'];
 $nombreantiguo = $_SESSION['nombre'];
 $consulta = "UPDATE clientes SET nombre='".$nombre."', sector='".$sector."', direccion='".$direccion."', 
-comentario='".$comentario."', comentario='".$comentario."' WHERE nombre = '".$nombreantiguo."' ";
+comentario='".$comentario."', comentario='".$comentario."' AND nit = '".$nit."' WHERE nombre = '".$nombreantiguo."' ";
 if(!mysql_query($consulta,$conexion)){
 	die ("ERROR: ".mysql_error()); 
 } else{

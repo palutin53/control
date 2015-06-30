@@ -52,12 +52,12 @@ echo "
 				</div>
 				<div class='col-md-6 '>
 					<label for='numero'>Correlativo:</label>
-					<input type='int' placeholder='Numero de Documento' name='correlativo' class='form-control' value='F'>
+					<input type='int' placeholder='Numero de Documento' name='correlativo' class='form-control' value='R'>
 				</div>
 				<div class='col-md-6'>
 					<label for='Mes'>Mes:</label>
 					<Select placeholder='ultimo_mes' name='mes' class='form-control'>
-						<option  value='seleccione'>seleccione</option>
+						<option  value='0'>seleccione</option>
 						<option  value='Enero'>Enero</option>
 						<option  value='Febrero'>Febrero</option>
 						<option  value='Marzo'>Marzo</option>
@@ -99,7 +99,7 @@ echo "
 				</div>
 				<div class='col-md-12'>
 					<label for='comentario'>cantidad:</label>
-					<input type='Text' placeholder='cantidad' name='cantidad' class='form-control'>
+					<input type='Text' placeholder='cantidad' name='cantidad' class='form-control' value=0>
 				</div>
 				<div class='col-md-12'>
 					<label for='comentario'>Comentario:</label>

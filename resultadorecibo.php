@@ -24,7 +24,7 @@ $sector = $_GET['sector'];
 <div class='container'>
 <div class='row'>";
 		echo "Resultados para: '".$nombre."' '".$sector."'";
-	$consulta = mysql_query("SELECT * FROM clientes WHERE nombre = '".$nombre."' AND sector = '".$sector."' ORDER BY codigo ASC",$conexion);
+	$consulta = mysql_query("SELECT * FROM clientes WHERE nombre LIKE '%".$nombre."%' AND sector LIKE '%".$sector."%' ORDER BY codigo ASC",$conexion);
 	echo "
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 	<table border=1 width=100%>

@@ -25,7 +25,7 @@ echo "
 				</div>
 				<div class='col-md-6'> 
 					<label for='date'>Fecha:</label>
-					<input type='date'class='form-control'>
+					<input type='date'class='form-control' name='fecha'>
 				</div>
 				<div class='col-md-6'> 
 					<label for='sector'>Sector:</label>
